@@ -6,13 +6,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Validator;
 use Auth;
+
 class LoginController extends Controller
 {
    public function index()
    {
     if (Auth::check()) {
         return redirect('dashboard');
-    }else {
+    } else {
         return view('login.login');
     }
    }
@@ -35,6 +36,7 @@ class LoginController extends Controller
         $data['error'] = "Incorrect email/password";
         return redirect(route('login'))->with($data);
    }
+
    public function logout(Request $request)
    {
     Auth::logout();
