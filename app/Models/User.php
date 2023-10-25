@@ -8,20 +8,31 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable,SoftDeletes;
-     
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
         'email',
-        'password',
+        'phone',
+        'address',
+        'date_of_birth',
+        'gender',
+        'image',
+        'country',
+        'city',
+        'role',
+        'status',
+        'password'
     ];
 
     /**
@@ -43,4 +54,20 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function firstName(): Attribute
+    {
+        return Attribute::make(
+          get: fn (string $value) => ucfirst($value),
+          set: fn (string $value) => ucfirst($value),
+        );
+    }
+
+    public function lastName(): Attribute
+    {
+        return Attribute::make(
+          get: fn (string $value) => ucfirst($value),
+          set: fn (string $value) => ucfirst($value),
+        );
+    }
 }

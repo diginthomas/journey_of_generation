@@ -17,10 +17,10 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/',[LoginController::class,'index'] )->name('login');
-Route::post('/login',[LoginController::class,'authenticate'])->name('authenticate');
+Route::post('login',[LoginController::class,'authenticate'])->name('authenticate');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/dashboard',[DashboardController::class,'index'])->name('dashBoard');
-    Route::get('/logout',[LoginController::class,'logout'])->name('logout');
+    Route::get('dashboard',[DashboardController::class,'index'])->name('dashBoard');
+    Route::get('logout',[LoginController::class,'logout'])->name('logout');
 
 });
