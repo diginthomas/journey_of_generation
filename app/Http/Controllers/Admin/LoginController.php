@@ -35,7 +35,8 @@ class LoginController extends Controller
         $data['error'] = "Incorrect email/password";
         return redirect(route('login'))->with($data);
    }
-   public function logout(Request $request){
+   public function logout(Request $request)
+   {
     Auth::logout();
     $request->session()->flush();
     return redirect(route('login'));
