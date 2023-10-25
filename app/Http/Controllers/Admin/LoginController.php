@@ -30,7 +30,7 @@ class LoginController extends Controller
             $data['error'] = "Enter valid email/password";
             return redirect(route('login'))->with($data);
         }
-        if (Auth::attempt(['user_email' => $email, 'password' => $password, 'user_role' => 1])){
+        if (Auth::attempt(['email' => $email, 'password' => $password, 'role' => 1, 'status' => 1])){
            return redirect(route('dashBoard'));
         }
         $data['error'] = "Incorrect email/password";
