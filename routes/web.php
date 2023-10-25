@@ -12,7 +12,15 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+ use App\Http\Controllers\Admin\LoginController;
+ use App\Http\Controllers\Admin\DashboardController;
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::get('/',[LoginController::class,'index'] )->name('login');
+Route::post('/login',[LoginController::class,'authenticate'])->name('authenticate');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard',[DashboardController::class,'index'])->name('dashBoard');
+    Route::get('/logout',[LoginController::class,'logout'])->name('logout');
+
 });
