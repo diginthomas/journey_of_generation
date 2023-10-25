@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from dev.techneinfosys.com/html/wedash/demo/elements/ad-lightbox.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 24 Oct 2023 12:03:55 GMT -->
+<head>
+    <title>Wedash - Bootstrap 5 Admin Template</title>
+    <!-- Meta -->
+    <meta charset="utf-8" />
+    <meta  name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Dashboard Template Description" />
+    <meta name="keywords" content="Dashboard Template" />
+    <meta name="author" content="Techne infosys" />
+
+    <!-- Favicon icon -->
+    <link rel="icon" href="../assets/images/favicon.svg" type="image/x-icon" />
+
+    <!-- font css -->
+    <link rel="stylesheet" href="../assets/fonts/tabler-icons.min.css">
+    <link rel="stylesheet" href="../assets/fonts/feather.css">
+    <link rel="stylesheet" href="../assets/fonts/fontawesome.css">
+    <link rel="stylesheet" href="../assets/fonts/material.css">
+
+    <!-- vendor css -->
+    <link rel="stylesheet" href="#" id="rtl-style-link">
+    <link rel="stylesheet" href="../assets/css/style.css" id="main-style-link">
+
+</head>
+<body class="theme-1">
+  <!-- { Pre-loader } start -->
+  <div class="loader-bg">
+    <div class="loader-track">
+      <div class="loader-fill"></div>
+    </div>
+  </div>
+  <!-- { Pre-loader } End -->
+    <!-- { Header } start -->
+    <header class="site-header">
+      <div class="header-wrapper">
+<div class="me-auto flex-grow-1 d-flex align-items-center">
+  <ul class="list-unstyled header-menu-nav">
+    <li class="hdr-itm mob-hamburger">
+      <a href="#!" class="app-head-link" id="mobile-collapse">
+        <div class="hamburger hamburger-arrowturn">
+          <div class="hamburger-box">
+            <div class="hamburger-inner"></div>
+          </div>
+        </div>
+      </a>
+    </li>
+  </ul>
+  <div class="d-none d-md-none d-lg-block header-search ms-3">
+    <form action="#">
+      <div class="input-group ">
+        <input class="form-control rounded-3" type="search" value="" id="searchInput" placeholder="Search">
+        <div class="search-btn">
+          <button class="btn p-0 rounded-0 rounded-end" type="button">
+            <i data-feather="search"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<nav class="ms-auto">
+    <ul class="header-menu-nav list-unstyled">
+        <li class="hdr-itm dropdown ntf-dropdown">
+            <a href="#" class="app-head-link dropdown-toggle no-caret" data-bs-toggle="dropdown" role="button"
+                aria-haspopup="false" aria-expanded="false">
+                <i class="ti ti-bell"></i>
+                <span class="bg-danger h-dots"></span>
+            </a>
+            <div class="dropdown-menu header-dropdown  dropdown-menu-end">
+                <div class="notification-header">
+                    <h5 class="m-0">Notification</h5>
+                    <a href="#" class="btn  btn-outline-danger">Delet All</a>
+                </div>
+                <div class="notification-list">
+                  <div class="notification-body">
+                    <div class="d-flex align-items-start my-3">
+                      <div class="flex-grow-1">
+                        <div class="d-flex align-items-start justify-content-between mb-2">
+                          <a href="#">
+                            <h5 class="mb-0">Desktop notification turned on</h5>
+                          </a>
+                          <a href="#" class="text-hover-danger"><i data-feather="x"></i></a>
+                        </div>
+                        <div class="d-flex align-items-end justify-content-between">
+                          <p class="mb-0 text-muted">
+                            Now you will receive desktop notifications
+                          </p>
+                          <span class="text-sm ms-2 text-nowrap">1 min ago</span>
+                        </div>
+                      </div>
+                    </div>
+                    <hr class="dropdown-divider m-0">
+                    <div class="d-flex align-items-start my-3">
+                      <div class="flex-grow-1">
+                        <div class="d-flex align-items-start justify-content-between mb-2">
+                          <a href="#">
+                            <h5 class="mb-0">Admin settings</h5>
+                          </a>
+                          <a href="#" class="text-hover-danger"><i data-feather="x"></i></a>
+                        </div>
+                        <div class="d-flex align-items-end justify-content-between">
+                          <p class="mb-0 text-muted">
+                            Setup complete
+                          </p>
+                          <span class="text-sm ms-2 text-nowrap">2 min ago</span>
+                        </div>
+                      </div>
+                    </div>
+                    <hr class="dropdown-divider m-0">
+                    <div class="d-flex align-items-start my-3">
+                      <div class="flex-grow-1">
+                        <div class="d-flex align-items-start justify-content-between mb-2">
+                          <a href="#">
+                            <h5 class="mb-0">Mailbox</h5>
+                          </a>
+                          <a href="#" class="text-hover-danger"><i data-feather="x"></i></a>
+                        </div>
+                        <div class="d-flex align-items-end justify-content-between">
+                          <p class="mb-0 text-muted">
+                            you have 15 unread mails across 3 mailboxes.
+                          </p>
+                          <span class="text-sm ms-2 text-nowrap">2 min ago</span>
+                        </div>
+                      </div>
+                    </div>
+                    <hr class="dropdown-divider m-0">
+                    <div class="d-flex align-items-start my-3">
+                      <div class="flex-grow-1">
+                        <div class="d-flex align-items-start justify-content-between mb-2">
+                          <a href="#">
+                            <h5 class="mb-0">Order received</h5>
+                          </a>
+                          <a href="#" class="text-hover-danger"><i data-feather="x"></i></a>
+                        </div>
+                        <div class="d-flex align-items-end justify-content-between">
+                          <p class="mb-0 text-muted">
+                            New order received.
+                          </p>
+                          <span class="text-sm ms-2 text-nowrap">2 min ago</span>
+                        </div>
+                      </div>
+                    </div>
+                    <hr class="dropdown-divider m-0">
+                    <div class="d-flex align-items-start my-3">
+                      <div class="flex-grow-1">
+                        <div class="d-flex align-items-start justify-content-between mb-2">
+                          <a href="#">
+                            <h5 class="mb-0">Order received</h5>
+                          </a>
+                          <a href="#" class="text-hover-danger"><i data-feather="x"></i></a>
+                        </div>
+                        <div class="d-flex align-items-end justify-content-between">
+                          <p class="mb-0 text-muted">
+                            New order received.
+                          </p>
+                          <span class="text-sm ms-2 text-nowrap">2 min ago</span>
+                        </div>
+                      </div>
+                    </div>
+                    <hr class="dropdown-divider m-0">
+                    <div class="d-flex align-items-start my-3">
+                      <div class="flex-grow-1">
+                        <div class="d-flex align-items-start justify-content-between mb-2">
+                          <a href="#">
+                            <h5 class="mb-0">Mailbox</h5>
+                          </a>
+                          <a href="#" class="text-hover-danger"><i data-feather="x"></i></a>
+                        </div>
+                        <div class="d-flex align-items-end justify-content-between">
+                          <p class="mb-0 text-muted">
+                            you have 15 unread mails across 3 mailboxes.
+                          </p>
+                          <span class="text-sm ms-2 text-nowrap">2 min ago</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="notification-footer">
+                    <div class="d-grid">
+                        <a href="#" class="btn  btn-outline-secondary">View all</a>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="hdr-itm dropdown lng-dropdown">
+          <a
+            class="app-head-link dropdown-toggle no-caret"
+            data-bs-toggle="dropdown"
+            href="#"
+            role="button"
+            aria-haspopup="false"
+            aria-expanded="false"
+          >
+            <i class="ti ti-world me-1"></i>
+            <span class="drp-text">EN</span>
+            <i class="ti ti-chevron-down caret-arrow ms-1"></i>
+          </a>
+          <div class="dropdown-menu header-dropdown">
+            <ul class="p-0">
+              <li class="dropdown-item">
+                <a href="#!" class="drp-link">
+                  English
+                </a>
+              </li>
+              <hr class="dropdown-divider">
+              <li class="dropdown-item">
+                <a href="#!" class="drp-link">
+                  Deutsch
+                </a>
+              </li>
+            </ul>
+          </div>
+         
+        </li>
+        <li class="hdr-itm dropdown user-dropdown ">
+            <a class="app-head-link dropdown-toggle no-caret me-0" data-bs-toggle="dropdown" href="#" role="button"
+                aria-haspopup="false" aria-expanded="false">
+                <span class="avtar"><img src="../assets/images/user/avatar-2.jpg" alt=""></span>
+            </a>
+            <div class="dropdown-menu header-dropdown">
+                <ul class="p-0">
+                    <li class="dropdown-item ">
+                        <a href="#" class="drp-link">
+                          Edit Profile
+                        </a>
+                    </li>
+                    <hr class="dropdown-divider">
+                    <li class="dropdown-item ">
+                        <a href="#" class="drp-link">
+                            <span>Account Settings</span>
+                        </a>
+                    </li>
+                    <hr class="dropdown-divider">
+                    <li class="dropdown-item ">
+                        <a href="#" class="drp-link">
+                            <span>Wallet</span>
+                        </a>
+                    </li>
+                    <hr class="dropdown-divider">
+                    <li class="dropdown-item ">
+                        <a href="#" class="drp-link">
+                            <span>Billing</span>
+                        </a>
+                    </li>
+                    <hr class="dropdown-divider">
+                    <li class="dropdown-item ">
+                        <a href="#" class="drp-link">
+                            <i data-feather="log-out"></i>
+                            <span>Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</nav></div>
+    </header>
+    <!-- { Header } end -->
+  <!-- { navigation menu } start -->
+  <aside class="app-sidebar app-light-sidebar">
+    <div class="app-navbar-wrapper">
+      <div class="brand-link brand-logo">
+        <a href="../index.html" class="b-brand">
+          <!-- ========   change your logo hear   ============ -->
+          <img src="../assets/images/logo-dark.svg"  alt="" class="logo logo-lg"/>
+        </a>
+      </div>
+      <div class="navbar-content">
+
+        <ul class="app-navbar">
+          
+          <li class="nav-item nav-hasmenu">
+            <a href="#!" class="nav-link"><span class="nav-icon"><i class="ti ti-layout-2"></i></span><span
+                class="nav-text">Dashboard</span><span class="nav-arrow"><i data-feather="chevron-right"></i></span></a>
+            <ul class="nav-submenu">
+              <li class="nav-item">
+                <a class="nav-link" href="../index.html">Default</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../dashboard/ecommerce.html">Ecommerce</a>
+              </li>
+
+            </ul>
+          </li>
+          <li class="nav-item nav-caption">
+            <label>PAGES</label>
+          </li>
+          <li class="nav-item nav-hasmenu">
+            <a href="#!" class="nav-link"><span class="nav-icon"><i class="ti ti-layout-2"></i></span><span
+                class="nav-text">Application</span><span class="nav-arrow"><i data-feather="chevron-right"></i></span></a>
+            <ul class="nav-submenu">
+              <li class="nav-item">
+                <a class="nav-link" href="../pages/kanban.html">Kanban</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../pages/calendar.html">Calendar</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../pages/analytics.html">Analytics</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item nav-hasmenu">
+            <a href="#!" class="nav-link"><span class="nav-icon"><i data-feather="user"></i></span><span
+                class="nav-text">Users</span><span class="nav-arrow"><i data-feather="chevron-right"></i></span></a>
+            <ul class="nav-submenu">
+              <li class="nav-item">
+                <a class="nav-link" href="../pages/user-list.html">List</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../pages/user-reports.html">Reports</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../pages/user-team.html">Team</a>
+              </li>
+              <li class="nav-item nav-hasmenu">
+                <a class="nav-link" href="#">View<span class="nav-arrow"><i data-feather="chevron-right"></i></span></a>
+                <ul class="nav-submenu">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../pages/user-account-view.html">Account</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../pages/user-security-view.html">Security</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../pages/user-billing-view.html">Billing & Plans</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../pages/user-notifications-view.html">Notifications</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../pages/user-connections-view.html">Connections</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item nav-hasmenu">
+            <a href="#!" class="nav-link"><span class="nav-icon"><i class="ti ti-shopping-cart"></i></span><span
+                class="nav-text">Ecommerce</span><span class="nav-arrow"><i data-feather="chevron-right"></i></span></a>
+            <ul class="nav-submenu">
+              <li class="nav-item">
+                <a class="nav-link" href="../pages/ecommerce-add-new-products.html">New Product</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../pages/ecommerce-products-details.html">Product</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../pages/ecommerce-products.html">Product Lists</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../pages/ecommerce-order-list.html">Order Lists</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item nav-hasmenu">
+            <a href="#!" class="nav-link"><span class="nav-icon"><i class="ti ti-lock"></i></span><span
+                class="nav-text">Authentication</span><span class="nav-arrow"><i data-feather="chevron-right"></i></span></a>
+            <ul class="nav-submenu">
+              <li class="nav-item nav-hasmenu">
+                <a class="nav-link" href="#">Variant 1<span class="nav-arrow"><i data-feather="chevron-right"></i></span></a>
+                <ul class="nav-submenu">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../pages/authentication-signin.html" target="_blank">Sign up</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../pages/authentication-login.html" target="_blank">Sign in</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../pages/authentication-lock.html" target="_blank">Lock Screen</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../pages/authentication-verification.html" target="_blank">2-Step Verification</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item nav-hasmenu">
+                <a class="nav-link" href="#">Variant 2<span class="nav-arrow"><i data-feather="chevron-right"></i></span></a>
+                <ul class="nav-submenu">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../pages/authentication-signin-2.html" target="_blank">Sign up</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../pages/authentication-login-2.html" target="_blank">Sign in</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../pages/authentication-lock-2.html" target="_blank">Lock Screen</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../pages/authentication-verification-2.html" target="_blank">2-Step Verification</a>
+                  </li>
+        
+                </ul>
+              </li>
+            </ul>
+
+          </li>
+          <li class="nav-item nav-caption">
+            <label>Elements</label>
+          </li>
+          <li class="nav-item nav-hasmenu">
+            <a href="#!" class="nav-link"><span class="nav-icon"><i class="ti ti-apps"></i></span><span
+                class="nav-text">Basic</span><span class="nav-arrow"><i data-feather="chevron-right"></i></span></a>
+            <ul class="nav-submenu">
+              <li class="nav-item">
+                <a class="nav-link" href="basic-alert.html">Alert</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="basic-buttons.html">Button</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="basic-badges.html">Badges</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="basic-breadcrumb.html">Breadcrumb</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="basic-cards.html">Cards</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="basic-collapse.html">Collapse</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="basic-carousel.html">Carousel</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="basic-dropdowns.html">Dropdowns</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="basic-offcanvas.html">Offcanvas</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="basic-pagination.html">Pagination</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="basic-progress.html">Progress</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="basic-list-group.html">List group</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="basic-modal.html">Modal</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="basic-spinner.html">Spinner</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="basic-tabs.html">Tabs & pills</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="basic-typography.html">Typography</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="basic-tooltip-popover.html">Tooltip & popovers</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="basic-toasts.html">Toasts</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="basic-utilities.html">Utilities</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item nav-hasmenu">
+            <a href="#!" class="nav-link"><span class="nav-icon"><i class="ti ti-briefcase"></i></span><span
+                class="nav-text">Advance</span><span class="nav-arrow"><i data-feather="chevron-right"></i></span></a>
+            <ul class="nav-submenu">
+              <li class="nav-item">
+                <a class="nav-link" href="ad-alert.html">Sweet alert</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="ad-lightbox.html">Lightbox</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="ad-modal.html">Modal</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="ad-notification.html">Notification</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="ad-rangeslider.html">Rangeslider</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item nav-hasmenu">
+            <a href="#!" class="nav-link"><span class="nav-icon"><i class="ti ti-gift"></i></span><span
+                class="nav-text">icons</span><span class="nav-arrow"><i data-feather="chevron-right"></i></span></a>
+            <ul class="nav-submenu">
+              <li class="nav-item">
+                <a class="nav-link" href="feather-icons.html">Feather</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="tabler-icons.html">Tabler</a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item nav-caption">
+            <label>Forms</label>
+          </li>
+          <li class="nav-item nav-hasmenu">
+            <a href="#!" class="nav-link"><span class="nav-icon"><i class="ti ti-forms"></i></span><span class="nav-text">Forms
+                Elements</span><span class="nav-arrow"><i data-feather="chevron-right"></i></span></a>
+            <ul class="nav-submenu">
+              <li class="nav-item">
+                <a class="nav-link" href="../forms/form-elements.html">Form Basic</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../forms/form-floating.html">Form Floating</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../forms/form-options.html">Form Options</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../forms/input-group.html">Input Groups</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../forms/form-checkbox.html">Checkbox</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../forms/form-radio.html">Radio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../forms/form-switch.html">Switch</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item nav-hasmenu">
+            <a href="#!" class="nav-link"><span class="nav-icon"><i class="ti ti-plug"></i></span><span class="nav-text">Forms
+                Plugins</span><span class="nav-arrow"><i data-feather="chevron-right"></i></span></a>
+            <ul class="nav-submenu">
+              <li class="nav-item">
+                <a class="nav-link" href="../forms/form-datepicker.html">Date Pickers</a>
+              </li>
+
+              <li class="nav-item nav-hasmenu">
+                <a class="nav-link" href="../forms/form-select.html">Select2</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../forms/form-inputmask.html">Input Masks</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../forms/form-clipboard.html">Clipboard</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../forms/form-nouislider.html">Nouislider</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../forms/form-switch2.html">Bootstrap Switch</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item nav-hasmenu">
+            <a href="#!" class="nav-link"><span class="nav-icon"><i class="ti ti-edit"></i></span><span class="nav-text">Text
+                Editors</span><span class="nav-arrow"><i data-feather="chevron-right"></i></span></a>
+            <ul class="nav-submenu">
+              <li class="nav-item nav-hasmenu">
+                <a class="nav-link" href="#">CK editor<span class="nav-arrow"><i data-feather="chevron-right"></i></span></a>
+                <ul class="nav-submenu">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../forms/classic-editor.html">classic</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../forms/document-editor.html">Document</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../forms/inline-editor.html">Inline</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../forms/balloon-editor.html">Balloon</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item nav-hasmenu">
+            <a href="#!" class="nav-link"><span class="nav-icon"><i class="ti ti-notebook"></i></span><span class="nav-text">Form
+                Layouts</span><span class="nav-arrow"><i data-feather="chevron-right"></i></span></a>
+            <ul class="nav-submenu">
+              <li class="nav-item">
+                <a class="nav-link" href="../forms/form-lay-default.html">Layouts</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../forms/form-lay-multicolumn.html">Multicolumn</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../forms/form-lay-actionbars.html">Actionbars</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item nav-hasmenu">
+            <a href="#!" class="nav-link"><span class="nav-icon"><i class="ti ti-cloud-upload"></i></span><span
+                class="nav-text">File upload</span><span class="nav-arrow"><i data-feather="chevron-right"></i></span></a>
+            <ul class="nav-submenu">
+              <li class="nav-item">
+                <a class="nav-link" href="../forms/form-uppy-upload.html">Uppy</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="../forms/form-validation.html" class="nav-link"><span class="nav-icon"><i
+                  class="ti ti-clipboard-check"></i></span><span class="nav-text">Form Validation</span></a>
+          </li>
+          <li class="nav-item nav-caption">
+            <label>table</label>
+          </li>
+          <li class="nav-item nav-hasmenu">
+            <a href="#!" class="nav-link"><span class="nav-icon"><i class="ti ti-table"></i></span><span
+                class="nav-text">Bootstrap table</span><span class="nav-arrow"><i data-feather="chevron-right"></i></span></a>
+            <ul class="nav-submenu">
+              <li class="nav-item">
+                <a class="nav-link" href="../table/tbl-bootstrap.html">Basic table</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../table/tbl-sizing.html">Sizing table</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../table/tbl-border.html">Border table</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../table/tbl-styling.html">Styling table</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item nav-hasmenu">
+            <a href="#!" class="nav-link"><span class="nav-icon"><i class="ti ti-database"></i></span><span class="nav-text">Data table</span><span class="nav-arrow"><i data-feather="chevron-right"></i></span></a>
+            <ul class="nav-submenu">
+              <li class="nav-item">
+                <a class="nav-link" href="../table/tbl-dt-simple.html">Basic initialization</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../table/dt-tbl-export.html">Export</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+  <!-- { navigation menu } end -->
+
+  <!-- [ Header ] end -->
+</body>
+
+<!-- { Main Content } start -->
+<div class="page-content-wrapper">
+    <div class="content-container">
+        <div class="page-content">
+            <div class="content-header">
+                <h1>Light Box</h1>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item">Advance Componant</li>
+                    <li class="breadcrumb-item">Light Box</li>
+                </ul>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <!-- { Light-Box } start -->
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Single Images ( light box 2 )</h4>
+                            </div>
+                            <div class="card-body">
+                                <p> Add this code <code>data-lightbox="&lt;&lt;image path&gt;&gt;"</code> to see
+                                    roadtrip gallery
+                                    in lightbox popup.</p>
+                                <div class="row text-center">
+                                    <div class="col-xl-2 col-lg-3 col-sm-4 col-xs-12">
+                                        <a data-lightbox="../assets/images/light-box/l1.jpg"><img
+                                                src="../assets/images/light-box/sl1.jpg" class="img-fluid m-b-10"
+                                                alt=""></a>
+                                    </div>
+                                    <div class="col-xl-2 col-lg-3 col-sm-4 col-xs-12">
+                                        <a data-lightbox="../assets/images/light-box/l2.jpg"><img
+                                                src="../assets/images/light-box/sl2.jpg" class="img-fluid m-b-10"
+                                                alt=""></a>
+                                    </div>
+                                    <div class="col-xl-2 col-lg-3 col-sm-4 col-xs-12">
+                                        <a data-lightbox="../assets/images/light-box/l5.jpg"><img
+                                                src="../assets/images/light-box/sl5.jpg" class="img-fluid m-b-10"
+                                                alt=""></a>
+                                    </div>
+                                    <div class="col-xl-2 col-lg-3 col-sm-4 col-xs-12">
+                                        <a data-lightbox="../assets/images/light-box/l6.jpg"><img
+                                                src="../assets/images/light-box/sl6.jpg" class="img-fluid m-b-10"
+                                                alt=""></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- { Light-Box } end -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade modal-lightbox" id="lightboxModal" tabindex="-1" aria-labelledby="lightboxModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0">
+            <button type=" button"
+                class="btn-close btn-close-white position-absolute bottom-100 start-100 translate-middle1"
+                data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-body p-0">
+                <img src="#" alt="images" class="modal-image img-fluid">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- { Main Content } end -->
+<footer class="app-footer">
+  <div class="footer-wrapper">
+    <div class="py-1">
+      <span class="text-muted">&copy; 2023, Wedash for a better web.</span>
+    </div>
+    <div class="py-1">
+      <ul class="list-inline m-0">
+        <li class="list-inline-item">
+          <a class="link-secondary" href="javascript:">About Us</a>
+        </li>
+        <li class="list-inline-item">
+          <a class="link-secondary" href="javascript:">Blog</a>
+        </li>
+        <li class="list-inline-item">
+          <a class="link-secondary" href="javascript:">Library</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- Required Js -->
+<script src="../assets/js/plugins/jquery.min.js"></script>
+<script src="../assets/js/plugins/popper.min.js"></script>
+<script src="../assets/js/plugins/simplebar.min.js"></script>
+<script src="../assets/js/plugins/bootstrap.min.js"></script>
+<script src="../assets/js/plugins/feather.min.js"></script>
+<script src="../assets/js/main.js"></script>
+<script>
+$(document).ready(function() {
+  var lightboxModal = new bootstrap.Modal($('#lightboxModal')[0]);
+
+  $("[data-lightbox]").on('click', function(event) {
+    var imagespath = $(event.target);
+    if (imagespath.prop("tagName") === "IMG") {
+      imagespath = imagespath.parent();
+    }
+    var recipient = imagespath.attr('data-lightbox');
+    var image = $('.modal-image');
+    image.attr('src', recipient);
+    lightboxModal.show();
+  });
+
+  function removeClassByPrefix(node, prefix) {
+    $(node).removeClass(function(index, className) {
+      return (className.match(new RegExp('\\b' + prefix + '\\S+', 'g')) || []).join(' ');
+    });
+  }
+});
+
+</script>
+<div class="theme-roller">
+  <div class="open-button">
+    <button class="btn btn-primary" id="pct-toggler">
+      <i data-feather="settings"></i>
+    </button>
+  </div>
+  <div class="theme-roller-content">
+    <div class="presets-header bg-primary">
+      <h5 class="mb-0 text-white f-w-400">Theme Customizer</h5>
+    </div>
+    <div class="presets-list">
+      <h6 class="mt-2">
+        <i data-feather="credit-card" class="me-2"></i>Primary color settings
+      </h6>
+      <hr class="my-2" />
+      <div class="themes-preference">
+        <a href="#!" class="" data-value="theme-1"></a>
+        <a href="#!" class="" data-value="theme-2"></a>
+        <a href="#!" class="" data-value="theme-3"></a>
+        <a href="#!" class="" data-value="theme-4"></a>
+      </div>
+      <hr class="my-2" />
+      <h6 class="mt-4">
+        <i data-feather="sun" class="me-2"></i>Layout settings
+      </h6>
+      <hr class="my-2" />
+      <div class="form-check form-switch mt-2">
+        <input type="checkbox" class="form-check-input"   id="cust-darklayout" />
+        <label class="form-check-label f-w-600 pl-1" for="cust-darklayout" >Dark Layout</label>
+      </div>
+      <h6 class="mt-4">
+        <i data-feather="layout" class="me-2"></i>Right To Left
+      </h6>
+      <hr class="my-2" />
+      <div class="form-check form-switch">
+        <input type="checkbox" class="form-check-input"   id="cust-rtllayout"/>
+        <label class="form-check-label f-w-600 pl-1" for="cust-rtllayout">RTL layout</label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  feather.replace();
+  $(document).ready(function() {
+  var thtoggle = $("#pct-toggler");
+  if (thtoggle.length) {
+    thtoggle.on("click", function() {
+      var themeRoller = $(".theme-roller");
+      if (!themeRoller.hasClass("active")) {
+        themeRoller.addClass("active");
+      } else {
+        themeRoller.removeClass("active");
+      }
+    });
+  }
+
+  var themescolors = $(".themes-preference > a");
+  themescolors.on("click", function(event) {
+    var targetElement = $(event.target);
+    if (targetElement.is("span")) {
+      targetElement = targetElement.parent();
+    }
+    var temp = targetElement.attr("data-value");
+    $("body").removeClass(function(index, className) {
+      return (className.match(new RegExp("\\btheme-\\S+", "g")) || []).join(" ");
+    });
+    $("body").addClass(temp);
+    localStorage.setItem("themePreference", temp); // Save theme preference color to localStorage
+  });
+
+  var custthemebg = $("#cust-rtllayout");
+  custthemebg.on("click", function() {
+    if (custthemebg.prop("checked")) {
+      $("html").attr("dir", "rtl");
+      $("html").attr("lang", "ar");
+      $("#rtl-style-link").attr("href", "../assets/css/style-rtl.css");
+      localStorage.setItem("rtlLayout", true);
+    } else {
+      $("html").removeAttr("dir");
+      $("html").removeAttr("lang");
+      $("#rtl-style-link").removeAttr("href");
+      localStorage.setItem("rtlLayout", false);
+    }
+  });
+
+  var custdarklayout = $("#cust-darklayout");
+  custdarklayout.on("click", function() {
+    if (custdarklayout.prop("checked")) {
+      $(".brand-link > .b-brand > .logo-lg").attr("src", "../assets/images/logo.svg");
+      $("#main-style-link").attr("href", "../assets/css/style-dark.css");
+      localStorage.setItem("darkLayout", true);
+    } else {
+      $(".brand-link > .b-brand > .logo-lg").attr("src", "../assets/images/logo-dark.svg");
+      $("#main-style-link").attr("href", "../assets/css/style.css");
+      localStorage.setItem("darkLayout", false);
+    }
+  });
+
+  function removeClassByPrefix(node, prefix) {
+    $(node).removeClass(function(index, className) {
+      return (className.match(new RegExp("\\b" + prefix + "\\S+", "g")) || []).join(" ");
+    });
+  }
+
+  // Load settings from localStorage
+  var storedDarkLayout = localStorage.getItem("darkLayout");
+  if (storedDarkLayout === "true") {
+    custdarklayout.prop("checked", true);
+    $(".brand-link > .b-brand > .logo-lg").attr("src", "../assets/images/logo.svg");
+    $("#main-style-link").attr("href", "../assets/css/style-dark.css");
+  }
+
+  var storedThemePreference = localStorage.getItem("themePreference");
+  if (storedThemePreference) {
+    $("body").removeClass(function(index, className) {
+      return (className.match(new RegExp("\\btheme-\\S+", "g")) || []).join(" ");
+    });
+    $("body").addClass(storedThemePreference);
+  }
+
+  // Apply RTL layout on page load
+  $(window).on('load', function() {
+    var storedRtlLayout = localStorage.getItem("rtlLayout");
+    if (storedRtlLayout === "true") {
+      custthemebg.prop("checked", true);
+      $("html").attr("dir", "rtl");
+      $("html").attr("lang", "ar");
+      $("#rtl-style-link").attr("href", "../assets/css/style-rtl.css");
+    }
+  });
+});
+
+</script>
+
+</body>
+
+
+<!-- Mirrored from dev.techneinfosys.com/html/wedash/demo/elements/ad-lightbox.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 24 Oct 2023 12:03:56 GMT -->
+</html>
