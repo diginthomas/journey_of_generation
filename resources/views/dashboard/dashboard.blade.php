@@ -100,27 +100,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-xxl-4 col-lg-6 col-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4>Daily Sales</h4>
-                                </div>
-                                <div class="card-body">
-                                    <div id="Sales-chart"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-xxl-8 col-lg-6 col-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4>Statistics</h4>
-                                </div>
-                                <div class="card-body">
-                                    <div id="traffic-chart"></div>
-                                </div>
-                            </div>
-                        </div>
+                      
                         <div class="col-12">
                             <div class="card table-card">
                                 <div class="card-header">
@@ -199,115 +179,6 @@
 
 @section('scripts')
 
-<script>
-    var options = {
-          series: [{
-          name: 'Inflation',
-          data: [2.3, 3.1, 4.0, 10.1, 4.0, 3.6, 3.2, 2.3, 1.4, 0.8, 0.5, 0.2]
-        }],
-          chart: {
-          height: 350,
-          type: 'bar',
-        },
-        plotOptions: {
-          bar: {
-            borderRadius: 10,
-            dataLabels: {
-              position: 'top', // top, center, bottom
-            },
-          }
-        },
-        dataLabels: {
-          enabled: true,
-          formatter: function (val) {
-            return val + "%";
-          },
-          offsetY: -20,
-          style: {
-            fontSize: '12px',
-            colors: ["#304758"]
-          }
-        },
-
-        xaxis: {
-          categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-          position: 'top',
-          axisBorder: {
-            show: false
-          },
-          axisTicks: {
-            show: false
-          },
-          crosshairs: {
-            fill: {
-              type: 'gradient',
-              gradient: {
-                colorFrom: '#D8E3F0',
-                colorTo: '#BED1E6',
-                stops: [0, 100],
-                opacityFrom: 0.4,
-                opacityTo: 0.5,
-              }
-            }
-          },
-          tooltip: {
-            enabled: true,
-          }
-        },
-        yaxis: {
-          axisBorder: {
-            show: false
-          },
-          axisTicks: {
-            show: false,
-          },
-          labels: {
-            show: false,
-            formatter: function (val) {
-              return val + "%";
-            }
-          }
-
-        },
-        title: {
-          text: 'Monthly Inflation in Argentina, 2002',
-          floating: true,
-          offsetY: 330,
-          align: 'center',
-          style: {
-            color: '#444'
-          }
-        }
-        };
-
-        var chart = new ApexCharts(document.querySelector("#traffic-chart"), options);
-        chart.render();
-
-
-    // pie chart
-        var options = {
-          series: [44, 55, 13, 43, 22],
-          chart: {
-          width: 380,
-          type: 'pie',
-        },
-        labels: ['Team A', 'Team B', 'Team C', 'Team D', 'Team E'],
-        responsive: [{
-          breakpoint: 480,
-          options: {
-            chart: {
-              width: 300
-            },
-            legend: {
-              position: 'bottom'
-            }
-          }
-        }]
-        };
-
-        var chart = new ApexCharts(document.querySelector("#Sales-chart"), options);
-        chart.render();
-</script>
 
 @endsection
 <div class="theme-roller">
