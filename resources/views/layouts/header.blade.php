@@ -6,6 +6,7 @@
   <meta name="description" content="Dashboard Template Description" />
   <meta name="keywords" content="Dashboard Template" />
   <meta name="author" content="Techne infosys" />
+  <meta name="csrf-token" content="{{ csrf_token() }}" />
 
 
   <title>@yield('title')</title>
@@ -18,9 +19,11 @@
   <link rel="stylesheet" href="{{ asset('assets/fonts/fontawesome.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/fonts/material.css') }}">
 
+
   <!-- vendor css -->
   <link rel="stylesheet" href="#" id="rtl-style-link">
   <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" id="main-style-link">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
 
   @yield('styles')
 
