@@ -15,8 +15,8 @@ class PicnicSeeder extends Seeder
     public function run(): void
     {
        $picnics = [
-        ['id'=>1,'title'=>'Summer Trip','location'=>'Goa','image'=>'sample.jpg','date'=> Carbon::now()->addMonth(),'time'=>Carbon::now()->format('H:i:s'),'description'=>'summer trip,good climate','agenda'=>'Mental health'],
-        ['id'=>2,'title'=>'Winter Trip','location'=>'Kashmir','image'=>'sample.jpg','date'=> Carbon::now()->subMonth(),'time'=>Carbon::now()->format('H:i:s'),'description'=>'winter trip,good climate','agenda'=>'Mental health']       
+        ['id'=>1,'title'=>'Summer Trip','location'=>'Goa','image'=>'sample.jpg','date'=> Carbon::now(),'description'=>'summer trip,good climate','agenda'=>'Mental health'],
+        ['id'=>2,'title'=>'Winter Trip','location'=>'Kashmir','image'=>'sample.jpg','date'=> Carbon::now(),'description'=>'winter trip,good climate','agenda'=>'Mental health']
     ];
     foreach ($picnics as $key => $value) {
         $exists = Picnic::withTrashed()->where('id', $value['id'])->first(); // considering softdeleted entry

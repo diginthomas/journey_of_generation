@@ -27,8 +27,10 @@ Route::middleware('auth')->group(function () {
         Route::post('picnic/list','picnicList')->name('picnicList');
         Route::get('picnic/add','addPicnic')->name('addPicnic');
         Route::post('picnic/save','savePicnic')->name('savePicnic');
-        Route::get('picnic/update/{picnic_id}','editPicnic')->name('editPicnic');
-        Route::get('picnic/view/{picnic_id','viewPicnic')->name('viewPicnic');
+        Route::get('picnic/edit/{id}','editPicnic')->name('editPicnic');
+        Route::get('picnic/view/{id}','viewPicnic')->name('viewPicnic');
+        Route::post('picnic/delete','deletePicnic')->name('deletePicnic');
+
      });
 
 });

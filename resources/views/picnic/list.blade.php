@@ -40,7 +40,9 @@
 @endsection
 @section('scripts')
 <script>
+    var page = "listPage";
     var listUrl = '{{route('picnicList')}}';
+    var deleteUrl = "{{route('deletePicnic')}}";
 </script>
 <script src="{{asset('assets/web/js/picnic.js')}}"></script>
 @endsection

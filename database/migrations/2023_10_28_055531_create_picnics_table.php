@@ -13,13 +13,12 @@ return new class extends Migration
     {
         Schema::create('picnics', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('location');
-            $table->string('image');
-            $table->date('date');
-            $table->time('time');
-            $table->mediumText('description');
-            $table->string('agenda');
+            $table->string('title')->nullable();
+            $table->string('location')->nullable();
+            $table->string('image')->nullable();
+            $table->timestampTz('date')->nullable();
+            $table->mediumText('description')->nullable();
+            $table->string('agenda')->nullable();
             $table->boolean('status')->default(1)->comment('1=>active,0=>inactive');
             $table->commonFields();
         });
