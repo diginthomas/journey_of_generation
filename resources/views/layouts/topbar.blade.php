@@ -12,7 +12,7 @@
       </a>
     </li>
     </ul>
-    <div class="d-none d-md-none d-lg-block header-search ms-3">
+    {{-- <div class="d-none d-md-none d-lg-block header-search ms-3">
     <form action="#">
       <div class="input-group ">
         <input class="form-control rounded-3" type="search" value="" id="searchInput" placeholder="Search">
@@ -23,7 +23,7 @@
         </div>
       </div>
     </form>
-    </div>
+    </div> --}}
     </div>
 
     <nav class="ms-auto">
@@ -151,69 +151,30 @@
                 </div>
             </div>
         </li>
-        <li class="hdr-itm dropdown lng-dropdown">
-          <a
-            class="app-head-link dropdown-toggle no-caret"
-            data-bs-toggle="dropdown"
-            href="#"
-            role="button"
-            aria-haspopup="false"
-            aria-expanded="false"
-          >
-            <i class="ti ti-world me-1"></i>
-            <span class="drp-text">EN</span>
-            <i class="ti ti-chevron-down caret-arrow ms-1"></i>
-          </a>
-          <div class="dropdown-menu header-dropdown">
-            <ul class="p-0">
-              <li class="dropdown-item">
-                <a href="#!" class="drp-link">
-                  English
-                </a>
-              </li>
-              <hr class="dropdown-divider">
-              <li class="dropdown-item">
-                <a href="#!" class="drp-link">
-                  Deutsch
-                </a>
-              </li>
-            </ul>
-          </div>
-
-        </li>
+ 
         <li class="hdr-itm dropdown user-dropdown ">
             <a class="app-head-link dropdown-toggle no-caret me-0" data-bs-toggle="dropdown" href="#" role="button"
                 aria-haspopup="false" aria-expanded="false">
-                <span class="avtar"><img src=" {{ asset('assets/images/user/avatar-2.jpg') }}" alt=""></span>
+                <span class="avtar">
+                  @if (auth()->user()->image == "")
+                  <img class="img-fluid rounded" src="{{asset('assets/images/user.png')}}" alt="">
+                  @else
+                  {{-- <img class="img-fluid rounded" src="{{asset('uploads/images/' . auth()->user()->image) }}" alt=""> --}}
+                  @endif
+                </span>
             </a>
             <div class="dropdown-menu header-dropdown">
                 <ul class="p-0">
                     <li class="dropdown-item ">
-                        <a href="#" class="drp-link">
-                          Edit Profile
+                        <a href="{{route('profile')}}" class="drp-link">
+                          <i data-feather="user"></i>
+                         Account
                         </a>
                     </li>
+                   
                     <hr class="dropdown-divider">
                     <li class="dropdown-item ">
-                        <a href="#" class="drp-link">
-                            <span>Account Settings</span>
-                        </a>
-                    </li>
-                    <hr class="dropdown-divider">
-                    <li class="dropdown-item ">
-                        <a href="#" class="drp-link">
-                            <span>Wallet</span>
-                        </a>
-                    </li>
-                    <hr class="dropdown-divider">
-                    <li class="dropdown-item ">
-                        <a href="#" class="drp-link">
-                            <span>Billing</span>
-                        </a>
-                    </li>
-                    <hr class="dropdown-divider">
-                    <li class="dropdown-item ">
-                        <a href="#" class="drp-link">
+                        <a  class="drp-link" id="logout">
                             <i data-feather="log-out"></i>
                             <span>Logout</span>
                         </a>
