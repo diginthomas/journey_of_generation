@@ -15,8 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained('users');
             $table->foreignId('picnic_id')->nullable()->constrained('picnics');
-            $table->timestamps();
-            $table->softDeletes();
+            $table->commonFields();
         });
     }
 

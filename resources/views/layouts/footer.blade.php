@@ -40,6 +40,7 @@
 <script src="{{ asset('assets/js/main.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 <!-- Apex Chart -->
 {{-- <script src="{{ asset('assets/js/plugins/apexcharts.min.js') }}"></script> --}}
 <script>

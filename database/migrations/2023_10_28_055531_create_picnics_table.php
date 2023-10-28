@@ -20,8 +20,8 @@ return new class extends Migration
             $table->time('time');
             $table->mediumText('description');
             $table->string('agenda');
-            $table->timestamps();
-            $table->softDeletes();
+            $table->boolean('status')->default(1)->comment('1=>active,0=>inactive');
+            $table->commonFields();
         });
     }
 
