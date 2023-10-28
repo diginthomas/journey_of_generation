@@ -13,7 +13,7 @@ class CommonRepository
     return Picnic::when($active == true, function($query){
       $query->where('status', 1);
     })
-    ->select('id', 'title', 'location', 'image', 'date', 'time', 'description', 'agenda', 'status')
+    ->select('id', 'title', 'location', 'image', 'date', 'description', 'agenda', 'status')
     ->latest();
   }
 

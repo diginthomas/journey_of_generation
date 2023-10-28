@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Picnic extends Model
 {
     use HasFactory,UpdateLogger,SoftDeletes;
+    
     protected $guarded = [];
 
     public function picnicDetails():HasMany
