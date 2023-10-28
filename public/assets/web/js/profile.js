@@ -16,6 +16,10 @@ $("#edit-profile-form").validate({
             minlength: 8,
             maxlength: 12,
         },
+        email: {
+          required: true,
+          email:true
+        },
         // user_image:{
         //     extension: "jpg|jpeg|png|ico|bmp"
         // }
@@ -36,6 +40,10 @@ $("#edit-profile-form").validate({
             minlength: "Please enter valid phone number",
             maxlength: "Please enter valid phone number",
         },
+        email: {
+          required: 'Please enter email',
+          email: 'Please enter valid email'
+        },
         // user_image:{
         //     extension: "Invalid image"
         // }
@@ -48,16 +56,15 @@ $("#edit-profile-form").validate({
         var formData = new FormData(form);
         //  console.log(form);
         $.ajax({
-            url: "/profile/update",
             type: "POST",
-            processData: false,
-            contentType: false,
             cache: false,
+            contentType: false,
+            processData: false,
+            url: updateUrl,
+            data: formData,
             headers: {
                 "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
             },
-
-            data: formData,
             statusCode: {
                 500: function () {
                     toastr.error("Error,Please try again");
@@ -70,7 +77,7 @@ $("#edit-profile-form").validate({
                     toastr.error(data["error"]);
                 } else {
                     window.location.replace("/profile");
-                    toastr.success("profile updated");
+                    toastr.success('Success',"profile updated");
                 }
                 $("#edit-profile-submit").prop("disabled", false);
                 $("#edit-profile-submit").html("save");
