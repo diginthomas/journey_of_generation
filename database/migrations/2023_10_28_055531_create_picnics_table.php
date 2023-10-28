@@ -19,7 +19,7 @@ return new class extends Migration
             $table->timestampTz('date')->nullable();
             $table->mediumText('description')->nullable();
             $table->string('agenda')->nullable();
-            $table->boolean('status')->default(1)->comment('1=>active,0=>inactive');
+            $table->boolean('status')->nullable()->comment('1=>active,0=>inactive');
             $table->commonFields();
         });
     }

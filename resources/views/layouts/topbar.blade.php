@@ -156,10 +156,10 @@
             <a class="app-head-link dropdown-toggle no-caret me-0" data-bs-toggle="dropdown" href="#" role="button"
                 aria-haspopup="false" aria-expanded="false">
                 <span class="avtar">
-                  @if (auth()->user()->image == "")
+                  @if (auth()->user()->image == null)
                   <img class="img-fluid rounded" src="{{asset('assets/images/user.png')}}" alt="">
                   @else
-                  {{-- <img class="img-fluid rounded" src="{{asset('uploads/images/' . auth()->user()->image) }}" alt=""> --}}
+                  <img class="img-fluid rounded" src="{{Storage::url('users/profile_images/' . auth()->user()->image)}}" alt="">
                   @endif
                 </span>
             </a>

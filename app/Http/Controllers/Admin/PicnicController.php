@@ -114,6 +114,7 @@ class PicnicController extends Controller
 
     function savePicnic(Request $request, ValidationRepository $validationRepo)
     {
+
       if ($validationRepo->picnicFormValidation($request)->fails()) {
         $jsonArray = [
           'status' => 'validationError',
@@ -144,9 +145,10 @@ class PicnicController extends Controller
       return response()->json($jsonArray);
     }
 
-    function viewPicnic($id)
+    function viewPicnic($id,CommonRepository $commonRepo)
     {
-
+        $picnic = $commonRepo->getPicnics(false)->find(base64_decode($id));
+        return view('picnic.view',compact('picnic'));
     }
 
     public function deletePicnic(Request $request)

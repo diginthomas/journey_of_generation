@@ -69,6 +69,15 @@
 
                                             </div>
                                         </div>
+                                        <div class="form-group row">
+                                        <div class="col-lg-4">
+                                        <div class="form-check form-switch custom-switch-v1">
+                                            <input type="checkbox" class="form-check-input input-success"
+                                                id="customswitchv1-3" value="1" checked name="status">
+                                            <label class="form-check-label" for="customswitchv1-3">Active</label>
+                                        </div>
+                                        </div>
+                                        </div>
                                         <div class="col-lg-4">
                                         <button type="submit" id="add-pinic-submit" class="btn btn-primary me-3">Save</button>
                                         </div>
