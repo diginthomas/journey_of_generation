@@ -25,7 +25,7 @@ const picnicTable = $('#picnic-list-table').DataTable({
     lengthMenu: [[10, 25, 50, 100, 500], [10, 25, 50, 100, 500]],
     dom: 'lfBrtip',
     "order": [[ 0, "asc" ]], //set the default order on # column
-    'columnDefs': [ 
+    'columnDefs': [
         {
         'targets': [0,2,3], /* column indexes starts with 0 */
         'orderable': true, /* true or false - to configure sorting*/
@@ -40,13 +40,13 @@ const picnicTable = $('#picnic-list-table').DataTable({
     "processing": true,
     "serverSide": true,
     "ajax": {
-        "url": picnic_list,
+        "url": listUrl,
         "dataType": "json",
         "type": "POST",
         "data": function (d) {
             return $.extend({}, d, {
                 "_token": $('meta[name="csrf-token"]').attr("content"),
-                
+
             });
         }
     },

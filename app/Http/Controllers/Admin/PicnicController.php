@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+use App\Http\Repositories\CommonRepository;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -8,11 +9,12 @@ use App\Models\Picnic;
 
 class PicnicController extends Controller
 {
-   public function index(){
-         return view('picnic.picnic_list');
+   public function index()
+   {
+         return view('picnic.list');
    }
 
-   public function picnicList(Request $request )  
+   public function picnicList(Request $request , CommonRepository $commonRepo)
    {
     $columns = array('sl_no', 'title', 'location', 'date', 'time', 'description', 'agenda','action');
     $limit = $request->input('length');
@@ -21,7 +23,8 @@ class PicnicController extends Controller
     $dir = $request->input('order.0.dir');
     $search = $request->input('search.value');
     $totalData = Picnic::count();
-    $picnics = Picnic::select('title','location','date','time','description','agenda')
+
+    $picnics = $commonRepo->getPicnics(false)
         ->when($order == 'sl_no', function ($query) use ($dir) {
             $query->orderBy('created_at', $dir);
         })
@@ -49,8 +52,9 @@ class PicnicController extends Controller
         $picnics = $picnics->when($limit > 0, function ($query) use ($start, $limit) {
             $query->offset($start)
                 ->limit($limit);
-        })->get();
-    }  
+        })
+        ->get();
+    }
     // "dd($picnics);
     $json_data = array(
         "draw" => intval($request->input('draw')),
@@ -62,17 +66,26 @@ class PicnicController extends Controller
     return response()->json($json_data);
 
     }
-    function addPicnic()   {
-           return view('picnic.add_picnic');
-    }
-    function viewPicnic($picnicId)  {
-        
-    }
-   
-    function savePicnic(Request $request){
-        
-    }
-    function editPicnic($pic){
+
+    function addPicnic()
+    {
 
     }
+
+    function savePicnic(Request $request)
+    {
+
+    }
+
+    function editPicnic($pic)
+    {
+
+    }
+
+    function viewPicnic($picnicId)
+    {
+
+    }
+
+
 }
