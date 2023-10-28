@@ -62,12 +62,13 @@ class PicnicController extends Controller
     return response()->json($json_data);
 
     }
+    function addPicnic()   {
+           return view('picnic.add_picnic');
+    }
     function viewPicnic($picnicId)  {
         
     }
-    function addPicnic()   {
-        
-    }
+   
     function savePicnic(Request $request){
         
     }

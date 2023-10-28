@@ -21,7 +21,7 @@
                 <div class="col-12">
                     <div class="card table-card">
                         <div class="card-header">
-                            <h4>Picnic Table</h4>
+                            <h4>Picnic Table </h4><span style="float: right;"> <a href="{{route('addPicnic')}}"  class="btn btn-primary"><i data-feather="plus-circle"></i> Add Picnic</a></span>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
