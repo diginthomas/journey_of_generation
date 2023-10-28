@@ -7,7 +7,7 @@
 <aside class="app-sidebar app-light-sidebar">
   <div class="app-navbar-wrapper">
     <div class="brand-link brand-logo">
-      <a href="https://dev.techneinfosys.com/html/wedash/index.html" class="b-brand">
+      <a href="{{route('dashBoard')}}" class="b-brand">
         <!-- ========   change your logo hear   ============ -->
         <img src="{{ asset('assets/images/logo-dark.svg') }}"  alt="" class="logo logo-lg"/>
       </a>
@@ -16,16 +16,16 @@
 
       <ul class="app-navbar">
 
-        <li class="nav-item nav-hasmenu">
-          <a href="#!" class="nav-link"><span class="nav-icon"><i class="ti ti-layout-2"></i></span><span
-              class="nav-text">Dashboard</span><span class="nav-arrow"><i data-feather="chevron-right"></i></span></a>
-          <ul class="nav-submenu">
+        <li class="nav-item nav-hasmenu  {{in_array($current_route,['dashBoard'])? 'active' : ''}}">
+          <a href="{{route('dashBoard')}}" class="nav-link"><span class="nav-icon"><i class="ti ti-layout-2"></i></span><span
+              class="nav-text">Dashboard</span><span class="nav-arrow"></span></a>
+          <!-- <ul class="nav-submenu">
             <li class="nav-item">
               <a class="nav-link" href="{{route('dashBoard')}}">home</a>
             </li>
 
 
-          </ul>
+          </ul> -->
         </li>
 
         <li class="nav-item nav-hasmenu">
@@ -97,7 +97,7 @@
               </ul>
             </li>
           </ul>
-        </li>  
+        </li>
          <li class="nav-item nav-hasmenu">
           <a href="#!" class="nav-link"><span class="nav-icon"><i data-feather="file-text"></i></span><span
               class="nav-text">Survey</span><span class="nav-arrow"><i data-feather="chevron-right"></i></span></a>
