@@ -14,7 +14,7 @@
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{route('dashBoard')}}">Home</a></li>
                     <li class="breadcrumb-item">Picnic</li>
-                    
+
                 </ul>
             </div>
             <div class="row">
@@ -40,7 +40,7 @@
 @endsection
 @section('scripts')
 <script>
-    const picnic_list = '{{route('picnicList')}}';
+    var listUrl = '{{route('picnicList')}}';
 </script>
-<script src="{{asset('assets/web/js/picnic_list.js')}}"></script>
+<script src="{{asset('assets/web/js/picnic.js')}}"></script>
 @endsection
