@@ -165,7 +165,7 @@ $(function() {
             } else {
               $.each(output.messages, function(key, val){
                 // $("input[name='" + key + "']").parent().after('<label class="error">' +val[0]+'</label>');
-                toastr.error('Error', val);
+                toastr.error('Error', val); 
               });
 
             }

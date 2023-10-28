@@ -63,7 +63,7 @@
             </li>
           </ul>
         </li>
-        <li class="nav-item nav-hasmenu {{in_array($current_route,['picnic', 'addPicnic', 'editPicnic'])? 'active' : ''}}">
+        <li class="nav-item nav-hasmenu {{in_array($current_route,['picnic', 'addPicnic', 'editPicnic','viewPicnic'])? 'active' : ''}}">
           <a href="#" class="nav-link {{in_array($current_route,['picnic', 'addPicnic', 'editPicnic'])? 'active' : ''}}"><span class="nav-icon"><i data-feather="compass"></i></span><span
               class="nav-text">Picnic</span><span class="nav-arrow"><i data-feather="chevron-right"></i></span></a>
           <ul class="nav-submenu ">

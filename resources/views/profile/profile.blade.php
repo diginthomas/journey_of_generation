@@ -23,10 +23,10 @@
                                 <div class="card-body">
                                     <div class="user-image-section">
                                         <div class="d-flex align-items-center flex-column gap-4">
-                                            @if (auth()->user()->image == "")
+                                            @if (auth()->user()->image == null)
                                             <img class="img-fluid rounded" src="{{asset('assets/images/user.png')}}" alt="">
                                             @else
-                                            {{-- <img class="img-fluid rounded" src="{{asset('uploads/images/' . auth()->user()->image) }}" alt=""> --}}
+                                            <img class="img-fluid rounded" src="{{Storage::url('users/profile_images/' . auth()->user()->image)}}" alt="">
                                             @endif
                                             
 
