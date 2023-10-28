@@ -23,7 +23,7 @@
                                         <div class="d-lg-flex justify-content-between align-items-center ">
                                           <div class="d-md-flex align-items-center">
                                             @if($user->image != null)
-                                              <img src="{{Storage::url('users/profil_images/' . $user->image)}}">
+                                              <img src="{{Storage::url('users/profile_images/' . $user->image)}}">
                                             @else
                                               <img src="assets/images/user/avatar-2.jpg" alt="Image" class="rounded-circle avatar avatar-xl">
                                             @endif

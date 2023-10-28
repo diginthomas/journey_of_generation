@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+use App\Http\Repositories\CommonRepository;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -13,7 +14,7 @@ class PicnicController extends Controller
          return view('picnic.list');
    }
 
-   public function picnicList(Request $request )
+   public function picnicList(Request $request , CommonRepository $commonRepo)
    {
     $columns = array('sl_no', 'title', 'location', 'date', 'time', 'description', 'agenda','action');
     $limit = $request->input('length');
@@ -23,7 +24,7 @@ class PicnicController extends Controller
     $search = $request->input('search.value');
     $totalData = Picnic::count();
 
-    $picnics = Picnic::select('title','location','date','time','description','agenda')
+    $picnics = $commonRepo->getPicnics(false)
         ->when($order == 'sl_no', function ($query) use ($dir) {
             $query->orderBy('created_at', $dir);
         })
@@ -70,7 +71,7 @@ class PicnicController extends Controller
     {
 
     }
-    
+
     function savePicnic(Request $request)
     {
 

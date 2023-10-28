@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Http\Traits\UpdateLogger;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+
 class Picnic extends Model
 {
     use HasFactory,UpdateLogger,SoftDeletes;
