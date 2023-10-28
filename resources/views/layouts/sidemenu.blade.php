@@ -64,11 +64,11 @@
           </ul>
         </li>
         <li class="nav-item nav-hasmenu">
-          <a href="#!" class="nav-link"><span class="nav-icon"><i data-feather="compass"></i></span><span
+          <a href="{{route('picnic')}}" class="nav-link"><span class="nav-icon"><i data-feather="compass"></i></span><span
               class="nav-text">Picnic</span><span class="nav-arrow"><i data-feather="chevron-right"></i></span></a>
           <ul class="nav-submenu">
             <li class="nav-item">
-              <a class="nav-link" href="pages/user-list.html">List</a>
+              <a class="nav-link" href="{{route('picnic')}}">List</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="pages/user-reports.html">Reports</a>
