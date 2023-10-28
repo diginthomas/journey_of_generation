@@ -24,11 +24,11 @@ Route::middleware('auth')->group(function () {
 
      Route::controller(PicnicController::class)->group(function(){
         Route::get('picnic','index')->name('picnic');
-        Route::post('picnic\list','picnicList')->name('picnicList');
-        Route::get('picnic\add','addPicnic')->name('addPicnic');
-        Route::post('picnic\save','savePicnic')->name('savePicnic');
-        Route::get('picnic\update\{picnic_id}','editPicnic')->name('editPicnic');
-        Route::get('picnic\view\{picnic_id','viewPicnic')->name('viewPicnic');
+        Route::post('picnic/list','picnicList')->name('picnicList');
+        Route::get('picnic/add','addPicnic')->name('addPicnic');
+        Route::post('picnic/save','savePicnic')->name('savePicnic');
+        Route::get('picnic/update/{picnic_id}','editPicnic')->name('editPicnic');
+        Route::get('picnic/view/{picnic_id','viewPicnic')->name('viewPicnic');
      });
 
 });

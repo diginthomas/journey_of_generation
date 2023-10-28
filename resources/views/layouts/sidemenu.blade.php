@@ -16,7 +16,7 @@
 
       <ul class="app-navbar">
 
-        <li class="nav-item nav-hasmenu  {{in_array($current_route,['dashBoard'])? 'active' : ''}}">
+        <li class="nav-item nav-hasmenu  {{in_array($current_route,['dashBoard','profile'])? 'active' : ''}}">
           <a href="{{route('dashBoard')}}" class="nav-link"><span class="nav-icon"><i class="ti ti-layout-2"></i></span><span
               class="nav-text">Dashboard</span><span class="nav-arrow"></span></a>
           <!-- <ul class="nav-submenu">
