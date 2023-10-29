@@ -1,7 +1,7 @@
 
 @extends('layouts.app')
 @section('title')
-{{$picnic->title}}
+ View Picnic
 @endsection
 
 @inject('carbon', 'Carbon\Carbon')
