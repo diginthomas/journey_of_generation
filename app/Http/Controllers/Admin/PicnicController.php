@@ -20,7 +20,7 @@ class PicnicController extends Controller
 
    public function picnicList(Request $request , CommonRepository $commonRepo)
    {
-      $columns = array('sl_no', 'title', 'location', 'date', 'agenda','action');
+      $columns = array('sl_no', 'title', 'location', 'date', 'agenda', 'status','action');
       $limit = $request->input('length');
       $start = $request->input('start');
       $order = $columns[$request->input('order.0.column')];
@@ -66,27 +66,32 @@ class PicnicController extends Controller
         foreach($picnics as $picnic)
         {
             /* 'DT_RowId' (default name for DataTables to assign row ids) to set the row id for the dataTable - important */
-            $nested_data['DT_RowId'] = 'row_'.$picnic->id;
-            $nested_data['title'] = $picnic->title;
-            $nested_data['location'] = $picnic->location;
-            $date = Carbon::parse($picnic->date)->format('M d, Y');
+            $nestedData['DT_RowId'] = 'row_'.$picnic->id;
+            $nestedData['title'] = $picnic->title;
+            $nestedData['location'] = $picnic->location;
+            $date = Carbon::parse($picnic->date)->format('M d, Y, h:i:a');
             // $time = Carbon::parse($picnic->date)->format('H:i:s');
-            $nested_data['date'] = $date;
+            $nestedData['date'] = $date;
             // $nested_data['time'] = $time;
-            $nested_data['agenda'] = $picnic->agenda;
-            $nested_data['action'] = '';
+            $nestedData['agenda'] = $picnic->agenda;
+            if ($picnic->status == 1) {
+              $nestedData['status'] = config('buttons.active');
+            } else {
+              $nestedData['status'] = config('buttons.inactive');
+            }
+            $nestedData['action'] = '';
 
-            $nested_data['action'] .= '<a href="'.route('viewPicnic', base64_encode($picnic->id)).'"
+            $nestedData['action'] .= '<a href="'.route('viewPicnic', base64_encode($picnic->id)).'"
             class="'.config('buttons.view-class').'" title="View"> '.config('buttons.view-icon').'</a>&nbsp;&nbsp;';
 
-            $nested_data['action'] .= '<a href="'.route('editPicnic', base64_encode($picnic->id)).'"
+            $nestedData['action'] .= '<a href="'.route('editPicnic', base64_encode($picnic->id)).'"
             class="'.config('buttons.edit-class').'" title="Edit"> '.config('buttons.edit-icon').'</a>&nbsp;&nbsp;';
 
-            $nested_data['action'] .= '<a href="javascript:void(0)" data-id="'.$picnic->id.'"
+            $nestedData['action'] .= '<a href="javascript:void(0)" data-id="'.$picnic->id.'"
             class="'.config('buttons.delete-class').'" title="Delete"> '.config('buttons.delete-icon').'</a>&nbsp;&nbsp;';
 
 
-            $data[] = $nested_data;
+            $data[] = $nestedData;
         }
     }
 
@@ -114,7 +119,6 @@ class PicnicController extends Controller
 
     function savePicnic(Request $request, ValidationRepository $validationRepo)
     {
-
       if ($validationRepo->picnicFormValidation($request)->fails()) {
         $jsonArray = [
           'status' => 'validationError',
@@ -125,6 +129,11 @@ class PicnicController extends Controller
         if($request->filled('date')) {
             $date = Carbon::parse($request->input('date'))->format('Y-m-d H:i:s');
             $formData['date'] = $date;
+        }
+        if ($request->input('status') == "on") {
+          $formData['status'] = 1;
+        } else {
+          $formData['status'] = 0;
         }
         if ($request->has('image')) {
             $formData['image'] = $this->uploadImage($request,'image','picnic_images');

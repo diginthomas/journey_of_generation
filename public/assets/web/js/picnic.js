@@ -16,6 +16,7 @@ $(function() {
         { title: "Location", data: "location" },
         { title: "Date", data: "date" },
         { title: "Agenda", data: "agenda" },
+        { title: "Status", data: "status" },
         { title: "Action", data: "action" },
     ];
     const picnicTable = $('#picnic-list-table').DataTable({
@@ -165,7 +166,7 @@ $(function() {
             } else {
               $.each(output.messages, function(key, val){
                 // $("input[name='" + key + "']").parent().after('<label class="error">' +val[0]+'</label>');
-                toastr.error('Error', val); 
+                toastr.error('Error', val);
               });
 
             }

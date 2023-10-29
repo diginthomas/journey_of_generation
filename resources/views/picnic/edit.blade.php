@@ -76,7 +76,7 @@
                                             <div class="col-lg-4">
                                             <div class="form-check form-switch custom-switch-v1">
                                                 <input type="checkbox" class="form-check-input input-success"
-                                                    id="customswitchv1-3" value="1" checked name="status">
+                                                    id="status" name="status">
                                                 <label class="form-check-label" for="customswitchv1-3">Active</label>
                                             </div>
                                             </div>
@@ -106,6 +106,14 @@
     var id = "{{$picnic->id}}";
     var date = "{{$date}}";
     var saveUrl = "{{route('savePicnic')}}";
+    var status = "{{$picnic->status}}";
+    var currentStatus = '';
+    if (status == 1) {
+      currentStatus = true;
+    } else {
+      currentStatus = false;
+    }
+    $('#status').prop('checked', currentStatus).change();
   </script>
   <script src="{{ asset('assets/daterangepicker/daterangepicker.js')}}"></script>
   <script src="{{asset('assets/web/js/picnic.js')}}"></script>

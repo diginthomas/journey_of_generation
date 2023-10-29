@@ -1,7 +1,7 @@
 
 @extends('layouts.app')
 @section('title')
-{{$picnic->title}}
+ View Picnic
 @endsection
 
 @inject('carbon', 'Carbon\Carbon')
@@ -26,7 +26,7 @@
                             <div class="card-body">
                                 <div class="float-end">
                                     <a href="{{route('editPicnic', base64_encode($picnic->id))}}" class="btn btn-sm btn-primary me-2"><i class="ti ti-pencil"></i>Edit</a>
-                                   
+
                                 </div>
                                 <h4 class="mb-3"><i data-feather="map-pin"></i> {{$picnic->location}}</h4>
                                 <div class="row">
@@ -39,8 +39,8 @@
                                                         <img src="{{Storage::url('picnic_images/' . $picnic->image)}}" class="d-block w-100"
                                                             alt="Product images">
                                                     </div>
-                                                   
-                                                    
+
+
                                                 </div>
                                                 {{-- <ol class="carousel-indicators position-relative product-carousel-indicators">
                                                     <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0"
@@ -69,7 +69,7 @@
                                     </div>
                                     <div class="col-lg-7">
                                         <h2 class="mt-0">{{$picnic->title}}</h2>
-                                       
+
                                         <div class="mt-4">
                                             <p class="text-muted mb-0">Date:</>
                                             <h4>{{$carbon::createFromFormat('Y-m-d H:i:s', $picnic->date)->format('M d Y')}} {{$carbon::createFromFormat('Y-m-d H:i:s', $picnic->date)->format('h:i A')}}</h4>
@@ -104,13 +104,13 @@
                                                 </div>
                                             </div>
                                         </div>
-                                       
+
                                     </div>
                                 </div>
-                                
+
                             </div>
                         </div>
-                       
+
                     </div>
                    </div>
                 </div>
