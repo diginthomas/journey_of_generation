@@ -1,5 +1,9 @@
 <?php
+
  return [
+
+   'active' => '<small class="badge bg-success">Active</small>',
+   'inactive' => '<small class="badge bg-danger">Inactive</small>',
 
    'add-icon' => '<i class="fas fa-plus"></i>',
    'add-class' => 'btn btn-primary addplus-btn float-right',
