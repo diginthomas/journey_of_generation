@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
- Add Picnics
+ Add Picnic
 @endsection
 
 @section('styles')

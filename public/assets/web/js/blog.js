@@ -1,9 +1,7 @@
-
 $(function() {
 
   var rowId = '';
   if (page == 'listPage') {
-
     const tableColumns = [
         {
             title: "#",
@@ -13,23 +11,22 @@ $(function() {
             },
         },
         { title: "Title", data: "title" },
-        { title: "Location", data: "location" },
         { title: "Date", data: "date" },
-        { title: "Agenda", data: "agenda" },
+        { title: "Created By", data: "author" },
         { title: "Status", data: "status" },
         { title: "Action", data: "action" },
     ];
-    const picnicTable = $('#picnic-list-table').DataTable({
+    const picnicTable = $('#blog-table').DataTable({
         language: {
             "processing": "<i class='fa fa-refresh fa-spin'></i>",
             "emptyTable": "<div class='alert alert-info text-center'>No picnic found found</div>"
         },
         lengthMenu: [[10, 25, 50, 100, 500], [10, 25, 50, 100, 500]],
         dom: 'lfBrtip',
-        "order": [[ 0, "asc" ]], //set the default order on # column
+        "order": [[ 0, "desc" ]], //set the default order on # column
         'columnDefs': [
             {
-            'targets': [0,2,3], /* column indexes starts with 0 */
+            'targets': [0], /* column indexes starts with 0 */
             'orderable': true, /* true or false - to configure sorting*/
             },
             {
@@ -55,6 +52,7 @@ $(function() {
         "columns": tableColumns
     });
 
+    /* Blog delete function start*/
     $(document).on("click", '.delete-btn', function(){
       Swal.fire({
           title: 'Are you sure?',
@@ -71,7 +69,7 @@ $(function() {
                 'id' : $(this).attr('data-id')
               };
               $.ajax({
-                  type: "POST",
+                  type: "DELETE",
                   url: deleteUrl,
                   data: params,
                   headers: {
@@ -108,64 +106,55 @@ $(function() {
           }
       })
     });
+    /* Blog delete function end*/
 
   } else if (page == 'addPage' || page == 'editPage') {
-
-    datePicker(moment());
-
-    if (id > 0) {
-      datePicker(date);
-    }
-
-    function datePicker(start_time) {
-        $('#date').daterangepicker({
-            singleDatePicker: true,
-            timePicker: true,
-            autoUpdateInput: false,
-            showDropdowns: false,
-             locale: {
-                format: 'MMMM D, YYYY, h:mm A'
-            },
-            startDate: start_time,
-            minDate: moment().startOf('day'), // min date will be always today
-        });
-
-        $('#date').on('apply.daterangepicker', function(ev, picker) {
-            $(this).val(picker.startDate.format('MMMM D, YYYY, h:mm A'));
-        });
-    }
-
-    // form submition start
-    $('#picnic_form').validate({
+    $('#blog_form').validate({
+      rules:{
+        title: {
+          required: true
+        },
+        description: {
+          required: true
+        },
+      },
+      messages: {
+        title: {
+          required: 'Enter Blog Title'
+        },
+        description: {
+          required: 'Enter Blog Description'
+        },
+      },
       submitHandler:function(form, e) {
-        var formData = new FormData(form);
         e.preventDefault();
+        var formData = new FormData(form);
         $.ajax({
           type: "POST",
           url: saveUrl,
-          data:formData,
+          data: formData,
           cache: false,
           contentType: false,
           processData: false,
           headers: {
               "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
           },
-          success:function(output) {
-            if (output.status == 'success') {
+          success:function(response) {
+            if (response.status == 'success') {
               Swal.fire({
                   title: 'Success!',
-                  text: output.message,
+                  text: response.message,
                   icon: 'success',
                   confirmButtonText: 'OK',
                   allowOutsideClick: false,
                   }).then((result) => {
                   if (result.value) {
-                      window.location.replace(output.next);
+                      window.location.replace(response.next);
                   }
               })
             } else {
-              $.each(output.messages, function(key, val){
-                // $("input[name='" + key + "']").parent().after('<label class="error">' +val[0]+'</label>');
+              $.each(response.messages, function(key, val){
+                //$("input[name='" + key + "']").parent().after('<label class="error">' +val[0]+'</label>');
                 toastr.error('Error', val);
               });
             }
@@ -181,8 +170,6 @@ $(function() {
         });
       },
     });
-    //form submition end
-
   }
 
 });
