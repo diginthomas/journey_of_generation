@@ -25,7 +25,7 @@
                                             @if($user->image != null)
                                               <img src="{{Storage::url('users/profile_images/' . $user->image)}}">
                                             @else
-                                              <img src="assets/images/user/avatar-2.jpg" alt="Image" class="rounded-circle avatar avatar-xl">
+                                              <img src="{{asset('assets/images/user/avatar-1.jpg')}}" alt="Image" class="rounded-circle avatar avatar-xl">
                                             @endif
                                             <div class="ms-md-4 mt-3">
                                               <h2 class="text-white fw-600 mb-1">Good afternoon, <br> Techne Infosys</h2>

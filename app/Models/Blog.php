@@ -4,18 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Http\Traits\UpdateLogger;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Picnic extends Model
+class Blog extends Model
 {
     use HasFactory, UpdateLogger, SoftDeletes;
 
     protected $guarded = [];
 
-    public function picnicDetails():HasMany
+    public function author():BelongsTo
     {
-        return $this->hasMany(PicnicDetails::class,'picnic_id');
+        return $this->belongsTo(User::class,'created_by');
     }
 }

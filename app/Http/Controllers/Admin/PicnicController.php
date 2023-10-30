@@ -26,7 +26,7 @@ class PicnicController extends Controller
       $order = $columns[$request->input('order.0.column')];
       $dir = $request->input('order.0.dir');
       $search = $request->input('search.value');
-      $totalData = Picnic::count();
+      $totalData = $commonRepo->getPicnics(false)->count();
 
       $picnics = $commonRepo->getPicnics(false)
           ->when($order == 'sl_no', function ($query) use ($dir) {
@@ -95,14 +95,14 @@ class PicnicController extends Controller
         }
     }
 
-    $json_data = array(
+    $jsonArray = array(
         "draw" => intval($request->input('draw')),
         "recordsTotal" => intval($totalData),
         "recordsFiltered" => intval($totalFiltered),
         "data" => $data,
 
     );
-    return response()->json($json_data);
+    return response()->json($jsonArray);
 
     }
 
@@ -111,7 +111,7 @@ class PicnicController extends Controller
       return view('picnic.add');
     }
 
-    function editPicnic($id,  CommonRepository $commonRepo)
+    function editPicnic($id, CommonRepository $commonRepo)
     {
       $picnic = $commonRepo->getPicnics(false)->find(base64_decode($id));
       return view('picnic.edit', compact('picnic'));
@@ -154,15 +154,15 @@ class PicnicController extends Controller
       return response()->json($jsonArray);
     }
 
-    function viewPicnic($id,CommonRepository $commonRepo)
+    function viewPicnic($id, CommonRepository $commonRepo)
     {
         $picnic = $commonRepo->getPicnics(false)->find(base64_decode($id));
         return view('picnic.view',compact('picnic'));
     }
 
-    public function deletePicnic(Request $request)
+    public function deletePicnic(Request $request, CommonRepository $commonRepo)
     {
-      Picnic::where('id', $request->input('id'))->delete();
+      $commonRepo->getPicnics(false)->find($request->input('id'))->delete();
       return response()->json(['status' => 'success', 'message' => 'Picnic Deleted Successfully']);
     }
 

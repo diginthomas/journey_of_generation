@@ -36,11 +36,13 @@
                                                 data-bs-ride="carousel">
                                                 <div class="carousel-inner">
                                                     <div class="carousel-item active">
+                                                        @if($picnic->image != null)
                                                         <img src="{{Storage::url('picnic_images/' . $picnic->image)}}" class="d-block w-100"
                                                             alt="Product images">
+                                                        @else
+                                                        <img src="{{asset('assets/images/user/avatar-1.jpg')}}" alt="Image" class="rounded-circle avatar avatar-xl">
+                                                        @endif
                                                     </div>
-
-
                                                 </div>
                                                 {{-- <ol class="carousel-indicators position-relative product-carousel-indicators">
                                                     <li data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0"
@@ -83,6 +85,15 @@
                                         <div class="mt-4">
                                             <h6>Agenda</h6>
                                             <p class="text-muted text-sm mb-0">{{$picnic->agenda}}
+                                            </p>
+                                        </div>
+                                        <div class="mt-4">
+                                            <h6>Status</h6>
+                                            @if($picnic->status == 1)
+                                              {!!config('buttons.active')!!}
+                                            @else
+                                              {!!config('buttons.inactive')!!}
+                                            @endif
                                             </p>
                                         </div>
                                         <div class="row mt-6">
