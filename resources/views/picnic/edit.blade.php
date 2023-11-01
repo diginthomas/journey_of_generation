@@ -64,7 +64,7 @@
                                             </div>
                                             <div class="col-lg-4">
                                                 <label  class="form-label">Agenda:</label>
-                                                <input type="text" value="{{$picnic->agenda}}" name="agenda" class="form-control"  placeholder="Enter agenda">
+                                                <textarea  name="agenda" class="form-control"  placeholder="Enter agenda">{{$picnic->agenda}}</textarea>
                                             </div>
                                             <div class="col-lg-4">
                                                 <label class="form-label">Picnic image:</label>
