@@ -15,7 +15,6 @@ $(function() {
         { title: "Title", data: "title" },
         { title: "Location", data: "location" },
         { title: "Date", data: "date" },
-        { title: "Agenda", data: "agenda" },
         { title: "Status", data: "status" },
         { title: "Action", data: "action" },
     ];
