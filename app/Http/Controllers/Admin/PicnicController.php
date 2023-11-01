@@ -20,7 +20,7 @@ class PicnicController extends Controller
 
    public function picnicList(Request $request , CommonRepository $commonRepo)
    {
-      $columns = array('sl_no', 'title', 'location', 'date', 'agenda', 'status','action');
+      $columns = array('sl_no', 'title', 'location', 'date', 'status','action');
       $limit = $request->input('length');
       $start = $request->input('start');
       $order = $columns[$request->input('order.0.column')];
@@ -73,7 +73,7 @@ class PicnicController extends Controller
             // $time = Carbon::parse($picnic->date)->format('H:i:s');
             $nestedData['date'] = $date;
             // $nested_data['time'] = $time;
-            $nestedData['agenda'] = $picnic->agenda;
+            // $nestedData['agenda'] = $picnic->agenda;
             if ($picnic->status == 1) {
               $nestedData['status'] = config('buttons.active');
             } else {

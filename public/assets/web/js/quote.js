@@ -1,6 +1,4 @@
-
 $(function() {
-
   var rowId = '';
   if (page == 'listPage') {
 
@@ -12,16 +10,14 @@ $(function() {
                 return meta.row + meta.settings._iDisplayStart + 1;
             },
         },
-        { title: "Title", data: "title" },
-        { title: "Location", data: "location" },
-        { title: "Date", data: "date" },
-        { title: "Status", data: "status" },
+        { title: "Quote", data: "quote" },
+        { title: "Published On", data: "published_on" },
         { title: "Action", data: "action" },
     ];
-    const picnicTable = $('#picnic-list-table').DataTable({
+    const quoteTable = $('#quote-list-table').DataTable({
         language: {
             "processing": "<i class='fa fa-refresh fa-spin'></i>",
-            "emptyTable": "<div class='alert alert-info text-center'>No picnic found found</div>"
+            "emptyTable": "<div class='alert alert-info text-center'>No quote  found</div>"
         },
         lengthMenu: [[10, 25, 50, 100, 500], [10, 25, 50, 100, 500]],
         dom: 'lfBrtip',
@@ -84,7 +80,7 @@ $(function() {
                               type: "success",
                               icon: "success"
                           }).then(function () {
-                              picnicTable.row(rowId).invalidate().draw(false);
+                            quoteTable.row(rowId).invalidate().draw(false);
                           });
                       } else {
                           Swal.fire({
@@ -107,81 +103,101 @@ $(function() {
           }
       })
     });
+    
+    $("#animateModal").modal({ 
+        backdrop: "static", 
+        keyboard: false, 
+    }); 
+    $('#quote').val('');
+    $('#id').val('');
 
-  } else if (page == 'addPage' || page == 'editPage') {
-
-    datePicker(moment());
-
-    if (id > 0) {
-      datePicker(date);
-    }
-
-    function datePicker(start_time) {
-        $('#date').daterangepicker({
-            singleDatePicker: true,
-            timePicker: true,
-            autoUpdateInput: false,
-            showDropdowns: false,
-             locale: {
-                format: 'MMMM D, YYYY, h:mm A'
-            },
-            startDate: start_time,
-            minDate: moment().startOf('day'), // min date will be always today
-        });
-
-        $('#date').on('apply.daterangepicker', function(ev, picker) {
-            $(this).val(picker.startDate.format('MMMM D, YYYY, h:mm A'));
-        });
-    }
-
-    // form submition start
-    $('#picnic_form').validate({
-      submitHandler:function(form, e) {
-        var formData = new FormData(form);
-        e.preventDefault();
+    function saveQuote(quote,id){     
         $.ajax({
-          type: "POST",
-          url: saveUrl,
-          data:formData,
-          cache: false,
-          contentType: false,
-          processData: false,
-          headers: {
-              "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-          },
-          success:function(output) {
-            if (output.status == 'success') {
-              Swal.fire({
-                  title: 'Success!',
-                  text: output.message,
-                  icon: 'success',
-                  confirmButtonText: 'OK',
-                  allowOutsideClick: false,
-                  }).then((result) => {
-                  if (result.value) {
-                      window.location.replace(output.next);
-                  }
-              })
-            } else {
-              $.each(output.messages, function(key, val){
-                // $("input[name='" + key + "']").parent().after('<label class="error">' +val[0]+'</label>');
-                toastr.error('Error', val);
-              });
+            type: "POST",
+            url: saveUrl,
+            data:JSON.stringify({'quote':quote,'id':id}),
+            cache: false,
+            processData: false,
+            contentType: 'application/json',
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),    
+            },
+            success:function(output) {
+              if (output.status == 'success') {
+                Swal.fire({
+                    title: 'Success!',
+                    text: output.message,
+                    icon: 'success',
+                    confirmButtonText: 'OK',
+                    allowOutsideClick: false,
+                    }).then((result) => {
+                    if (result.value) {
+                        $('#quote').val('');
+                        $('#id').val('');
+                        quoteTable.ajax.reload();
+                    }
+                })  
+              } else {
+                $.each(output.messages, function(key, val){
+                  toastr.error('Error', val);
+                });
+  
+              }
             }
-          },
-          error: function (error) {
-            Swal.fire({
-                title: "Sorry!",
-                text: "Something went wrong",
-                type: "error",
-                icon: 'error'
-            })
-          }
-        });
-      },
-    });
-    //form submition end
+          });
+    }
 
+    $( "#submit-quote" ).on( "click", function() {
+        //  $('#animateModal').modal('hide');
+            var quote = $('#quote').val();
+            var id = $('#id').val();
+            if(quote != ""){
+                $('#animateModal').modal('toggle');
+                saveQuote(quote,id);
+            }else{
+                toastr.error('Error', 'Quote is required');
+            }
+          
+      });
+      $(document).on("click", '.edit', function(){
+           $.ajax({
+            type: "POST",
+            url: editUrl,
+            data:JSON.stringify({'id': $(this).attr('data-id')}),
+            cache: false,
+            processData: false,
+            contentType: 'application/json',
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),    
+            },
+            success:function(output) {
+              if (output.quote != '') {
+                $('#quote').val(output.quote);
+                $('#id').val(output.id);
+              
+              } else {
+                $.each(output.messages, function(key, val){
+                  toastr.error('Error', 'Please try again');
+                  $('#quote').val('');
+                  $('#id').val('');
+                });
+  
+              }
+            },
+            error: function (data) {
+                toastr.error('Error', 'Please try again');
+                $('#quote').val('');
+                $('#id').val('');
+            },
+          });
+        $('#animateModal').modal('toggle');
+      });
+
+    //this function is used for reset modal values when it close
+    $(document).on("click", '#close-quite-modal', function(){
+        $('#quote').val('');
+        $('#id').val('');
+    });
   }
 
 });

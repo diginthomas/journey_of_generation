@@ -20,7 +20,7 @@
                 <div class="col-12">
                     <div class="card table-card">
                         <div class="card-header">
-                            <h4>Blog Table </h4><span style="float: right;"> <a href="{{route('addBlog')}}" title="Add Blog"  class="btn btn-primary"><i data-feather="plus-circle"></i> Add Picnic</a></span>
+                            <h4>Blog Table </h4><span style="float: right;"> <a href="{{route('addBlog')}}" title="Add Blog"  class="btn btn-primary"><i data-feather="plus-circle"></i> Add Blog</a></span>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
