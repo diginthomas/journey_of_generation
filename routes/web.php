@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\PicnicController;
 use App\Http\Controllers\Admin\QuoteController;
+use App\Http\Controllers\Admin\BlogController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -31,15 +32,27 @@ Route::middleware('auth')->group(function () {
         Route::get('picnic/edit/{id}','editPicnic')->name('editPicnic');
         Route::get('picnic/view/{id}','viewPicnic')->name('viewPicnic');
         Route::post('picnic/delete','deletePicnic')->name('deletePicnic');
+     });
 
-    });
-    
-    Route::controller(QuoteController::class)->group(function(){
+     Route::controller(QuoteController::class)->group(function(){
         Route::get('quote','index')->name('quote');
         Route::post('quote/list','quoteList')->name('quoteList');
         Route::post('quote/save','saveQuote')->name('saveQuote');
         Route::post('quote/edit','editQuote')->name('editQuote');
         route::post('quote/delete','deleteQuote')->name('deleteQuote');
     });
+     Route::controller(BlogController::class)->group(function(){
+        Route::get('blogs','index')->name('blogs');
+        Route::post('blogs/data','blogsData')->name('blogsData');
+        Route::get('blog/add','addBlog')->name('addBlog');
+        Route::post('blog/save','saveBlog')->name('saveBlog');
+        Route::get('blog/{id}/edit','editBlog')->name('editBlog');
+        Route::get('blog/{id}/view','viewBlog')->name('viewBlog');
+        Route::delete('blog/delete','deleteBlog')->name('deleteBlog');
+     });
 
-});
+
+    });
+    
+   
+

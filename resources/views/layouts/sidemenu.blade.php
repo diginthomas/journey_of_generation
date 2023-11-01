@@ -50,8 +50,6 @@
             <li class="nav-item">
               <a class="nav-link" href="pages/user-reports.html">Reports</a>
             </li>
-
-
           </ul>
         </li>
          <li class="nav-item nav-hasmenu">
@@ -160,7 +158,15 @@
             </li>
           </ul>
         </li>
-
+        <li class="nav-item nav-hasmenu {{in_array($current_route,['blogs', 'addBlog', 'editBlog', 'viewBlog'])? 'active' : ''}}">
+          <a href="javascript:void(0)" class="nav-link {{in_array($current_route,['blogs', 'addBlog', 'viewBlog'])? 'active' : ''}}"><span class="nav-icon"><i data-feather="image"></i></span><span
+              class="nav-text">Blog</span><span class="nav-arrow"><i data-feather="chevron-right"></i></span></a>
+          <ul class="nav-submenu ">
+            <li class="nav-item ">
+              <a class="nav-link " href="{{route('blogs')}}">List</a>
+            </li>
+          </ul>
+        </li>
       </ul>
     </div>
   </div>

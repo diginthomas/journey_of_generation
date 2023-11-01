@@ -4,6 +4,7 @@ namespace App\Http\Repositories;
 use App\Models\User;
 use App\Models\Picnic;
 use App\Models\Quote;
+use App\Models\Blog;
 use Auth;
 
 class CommonRepository
@@ -30,6 +31,18 @@ class CommonRepository
     return Quote::select('id', 'quote')
       ->latest();
 
+  }
+
+  public function getBlogs($active = true)
+  {
+    return Blog::with([
+      'author:id,first_name,last_name'
+    ])
+    ->when($active == true, function($query) {
+      $query->where('status', 1);
+    })
+    ->select('id', 'title', 'description', 'image', 'status', 'created_by', 'created_at')
+    ->latest();
   }
 
 }
