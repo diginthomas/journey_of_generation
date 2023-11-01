@@ -16,7 +16,7 @@ class QuoteController extends Controller
         return view('quote.list');
     }
 
-    public function quoteList(Request $request,CommonRepository $commonRepo) 
+    public function quoteList(Request $request,CommonRepository $commonRepo)
     {
         $columns = array('sl_no', 'title', 'quote', 'published_on' ,'status','action');
         $limit = $request->input('length');
@@ -65,7 +65,7 @@ class QuoteController extends Controller
             class="'.config('buttons.delete-class').'" title="Delete"> '.config('buttons.delete-icon').'</a>&nbsp;&nbsp;';
             $data[] = $nestedData;
         }
-    } 
+    }
     $json_data = array(
         "draw" => intval($request->input('draw')),
         "recordsTotal" => intval($totalData),
@@ -73,7 +73,7 @@ class QuoteController extends Controller
         "data" => $data,
 
     );
-    return response()->json($json_data); 
+    return response()->json($json_data);
     }
 
     public function saveQuote(Request $request,ValidationRepository $validationRepo)  {
@@ -94,10 +94,9 @@ class QuoteController extends Controller
             $jsonArray = [
               'status' => 'success',
               'message' => $message,
-              'next' => route('picnic')
             ];
           }
-        return response()->json($jsonArray);  
+        return response()->json($jsonArray);
     }
     public function editQuote(Request $request, CommonRepository $commonRepo){
       $quote = $commonRepo->getQuotes()->find($request->input('id'));
