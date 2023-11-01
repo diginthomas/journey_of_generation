@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->timestampTz('date')->nullable();
             $table->mediumText('description')->nullable();
-            $table->string('agenda')->nullable();
+            $table->mediumText('agenda')->nullable();
             $table->boolean('status')->nullable()->comment('1=>active,0=>inactive');
             $table->commonFields();
         });

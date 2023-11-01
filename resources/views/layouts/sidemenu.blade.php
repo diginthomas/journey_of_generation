@@ -33,34 +33,11 @@
               class="nav-text">Quotes</span><span class="nav-arrow"><i data-feather="chevron-right"></i></span></a>
           <ul class="nav-submenu">
             <li class="nav-item">
-              <a class="nav-link" href="pages/user-list.html">List</a>
+              <a class="nav-link" href="{{route('quote')}}">List</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="pages/user-reports.html">Reports</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="pages/user-team.html">Team</a>
-            </li>
-            <li class="nav-item nav-hasmenu">
-              <a class="nav-link" href="#">View<span class="nav-arrow"><i data-feather="chevron-right"></i></span></a>
-              <ul class="nav-submenu">
-                <li class="nav-item">
-                  <a class="nav-link" href="pages/user-account-view.html">Account</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="pages/user-security-view.html">Security</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="pages/user-billing-view.html">Billing & Plans</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="pages/user-notifications-view.html">Notifications</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="pages/user-connections-view.html">Connections</a>
-                </li>
-              </ul>
-            </li>
+            
+          
+    
           </ul>
         </li>
         <li class="nav-item nav-hasmenu {{in_array($current_route,['picnic', 'addPicnic', 'editPicnic','viewPicnic'])? 'active' : ''}}">

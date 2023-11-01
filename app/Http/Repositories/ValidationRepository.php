@@ -22,4 +22,12 @@ class ValidationRepository
     ]);
   }
 
+  public function quoteFormValidation($request): object{
+    return Validator::make($request->all(),[
+        'quote'=>'bail|required',
+      ],[ 
+      'quote.required'=>'Quote is mandatory']
+    );
+  }
+
 }
