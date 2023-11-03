@@ -7,6 +7,8 @@ use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\PicnicController;
 use App\Http\Controllers\Admin\QuoteController;
 use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\SeniorController;
+use App\Http\Controllers\Admin\VolunteerController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -50,6 +52,16 @@ Route::middleware('auth')->group(function () {
         Route::get('blog/{id}/view','viewBlog')->name('viewBlog');
         Route::delete('blog/delete','deleteBlog')->name('deleteBlog');
      });
+     Route::controller(SeniorController::class)->group(function(){
+         Route::get('seniors','index')->name('seniors');
+         Route::post('seniors/list','seniorList')->name('seniorList');
+
+     });
+     Route::controller(VolunteerController::class)->group(function(){
+        Route::get('volunteers','index')->name('volunteers');
+        Route::post('volunteers/list','volunteerList')->name('volunteerList');
+
+    });
 
 
     });
