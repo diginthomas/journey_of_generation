@@ -17,7 +17,7 @@ $(function() {
     const quoteTable = $('#quote-list-table').DataTable({
         language: {
             "processing": "<i class='fa fa-refresh fa-spin'></i>",
-            "emptyTable": "<div class='alert alert-info text-center'>No quote  found</div>"
+            "emptyTable": "<div class='alert alert-info text-center'>No quote found</div>"
         },
         lengthMenu: [[10, 25, 50, 100, 500], [10, 25, 50, 100, 500]],
         dom: 'lfBrtip',
@@ -103,15 +103,16 @@ $(function() {
           }
       })
     });
-    
-    $("#animateModal").modal({ 
-        backdrop: "static", 
-        keyboard: false, 
-    }); 
+
+    $("#animateModal").modal({
+        backdrop: "static",
+        keyboard: false,
+    });
     $('#quote').val('');
     $('#id').val('');
 
-    function saveQuote(quote,id){     
+
+    function saveQuote(quote,id){
         $.ajax({
             type: "POST",
             url: saveUrl,
@@ -120,7 +121,7 @@ $(function() {
             processData: false,
             contentType: 'application/json',
             headers: {
-                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),    
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
             },
             success:function(output) {
               if (output.status == 'success') {
@@ -136,12 +137,12 @@ $(function() {
                         $('#id').val('');
                         quoteTable.ajax.reload();
                     }
-                })  
+                })
               } else {
                 $.each(output.messages, function(key, val){
                   toastr.error('Error', val);
                 });
-  
+
               }
             }
           });
@@ -157,9 +158,13 @@ $(function() {
             }else{
                 toastr.error('Error', 'Quote is required');
             }
-          
+
+      });
+      $('.add-btn').click(function(){
+        $('.modal-title').html('Add New Quote');
       });
       $(document).on("click", '.edit', function(){
+          $('.modal-title').html('Edit Quote')
            $.ajax({
             type: "POST",
             url: editUrl,
@@ -168,20 +173,20 @@ $(function() {
             processData: false,
             contentType: 'application/json',
             headers: {
-                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),    
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
             },
             success:function(output) {
               if (output.quote != '') {
                 $('#quote').val(output.quote);
                 $('#id').val(output.id);
-              
+
               } else {
                 $.each(output.messages, function(key, val){
                   toastr.error('Error', 'Please try again');
                   $('#quote').val('');
                   $('#id').val('');
                 });
-  
+
               }
             },
             error: function (data) {

@@ -21,8 +21,8 @@
                 <div class="col-12">
                     <div class="card table-card">
                         <div class="card-header">
-                            <h4>Quote Table </h4><span style="float: right;"> 
-                                <button data-pc-animate="fade-in-scale" type="button" class="btn btn-primary"
+                            <h4>Quote Table </h4><span style="float: right;">
+                                <button data-pc-animate="fade-in-scale" type="button" title="Add Quote" class="btn btn-primary add-btn"
                                 data-bs-toggle="modal" data-bs-target="#animateModal">
                                 <i data-feather="plus-circle"></i>
                                Add Quote
@@ -45,20 +45,18 @@
 <div class="modal fade modal-animate"  id="animateModal" tabindex="-1" aria-labelledby="animateModalLabel"
     aria-hidden="true" >
     <div class="modal-dialog">
-       
         <div class="modal-content">
              <form id="quote-add-form" method="post">
             <div class="modal-header">
-                <h5 class="modal-title">Add new quote</h5>
-             
+                <h5 class="modal-title"></h5>
                 </button>
             </div>
             <div class="modal-body">
-              
+
                     <label  class="form-label">Quote:</label>
                     <textarea class="form-control" id="quote" name="description" placeholder="Add new quote"></textarea>
                     <input type="hidden" name="id" id="id">
-                
+
             </div>
             <div class="modal-footer">
                 <button type="button" id="close-quite-modal" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
