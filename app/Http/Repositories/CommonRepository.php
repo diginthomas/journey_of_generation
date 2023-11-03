@@ -19,11 +19,12 @@ class CommonRepository
       ->latest();
   }
 
-  public function getUsers($active = true)
+  public function getUsers($active = true,$role)
   {
     return User::when($active == true, function($query){
         $query->where('status', 1);
       })
+      ->where('role',$role)
       ->latest();
   }
   public function getQuotes()
