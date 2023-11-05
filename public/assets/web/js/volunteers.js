@@ -24,7 +24,7 @@ $(function() {
       const picnicTable = $('#picnic-list-table').DataTable({
           language: {
               "processing": "<i class='fa fa-refresh fa-spin'></i>",
-              "emptyTable": "<div class='alert alert-info text-center'>No picnic found found</div>"
+              "emptyTable": "<div class='alert alert-info text-center'>No volunteers found found</div>"
           },
           lengthMenu: [[10, 25, 50, 100, 500], [10, 25, 50, 100, 500]],
           dom: 'lfBrtip',
