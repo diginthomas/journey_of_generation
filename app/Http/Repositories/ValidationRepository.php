@@ -12,7 +12,8 @@ class ValidationRepository
       'location' => 'bail|required',
       'date' => 'bail|required',
       'description' => 'bail|required',
-      'agenda' => 'bail|required'
+      'agenda' => 'bail|required',
+      'image'=> 'bail|image|mimes:jpeg,jpg,png|max:5120',
     ],[
       'title.required' => 'Title is mandatory.',
       'location.required' => 'Location is mandatory.',
@@ -37,7 +38,7 @@ class ValidationRepository
   public function quoteFormValidation($request): object{
     return Validator::make($request->all(),[
         'quote'=>'bail|required',
-      ],[ 
+      ],[
       'quote.required'=>'Quote is mandatory']
     );
   }
