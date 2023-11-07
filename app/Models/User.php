@@ -32,6 +32,8 @@ class User extends Authenticatable
         'city',
         'role',
         'status',
+        'provider_name',
+        'provider_id',
         'password'
     ];
 
