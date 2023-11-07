@@ -14,10 +14,16 @@ use App\Http\Controllers\Api\QuoteController;
 |
 */
 
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::group(['middleware' => 'auth:sanctum'], function () {
+//
+// });
+//
+// Route::middleware('auth:sanctum')->group(function () {
+//
+// });
 
 Route::get('quotes',[QuoteController::class,'index']);
