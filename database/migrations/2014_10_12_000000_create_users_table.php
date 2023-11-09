@@ -26,7 +26,9 @@ return new class extends Migration
             $table->integer('role')->comment('1=>Admin,2=>Senior,3=>Volunteer');
             $table->string('status')->comment('1=>Active,2:Inactive')->nullable();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('provider_name')->nullable()->comment('social login provider name');
+            $table->string('provider_id')->nullable();
+            $table->string('password')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
