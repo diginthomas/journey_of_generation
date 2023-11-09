@@ -28,6 +28,8 @@ return new class extends Migration
             $table->string('provider_name')->nullable()->comment('social login provider name');
             $table->string('provider_id')->nullable();
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('provider_name')->nullable()->comment('social login provider name');
+            $table->string('provider_id')->nullable();
             $table->string('password')->nullable();
             $table->rememberToken();
             $table->timestamps();
