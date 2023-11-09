@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Repositories\ValidationRepository;
+use App\Http\Repositories\CommonRepository;
 use App\Http\Traits\CommonFunctions;
-use App\Models\Blog;
 use App\Models\BlogLike;
 use Auth;
 use Carbon\Carbon;
@@ -16,17 +16,17 @@ class BlogController extends Controller
 {
     use CommonFunctions;
 
-    public function index(Request $request)
+    public function index(Request $request, CommonRepository $commonRepo)
     {
         $search = $request->input('search');
         $userId = $this->getUserIdFromToken($request);
-        $blogs = Blog::select('id', 'title', 'image', 'description', 'created_at')
-            ->latest()->where('status', true)
+        $blogs = $commonRepo->getBlogs(true)
             ->when($search != '', function ($query) use ($search) {
                 $query->where(function ($subquery) use ($search) {
                     $subquery->orWhere('title', 'LIKE', "%{$search}%");
                 });
-            })->paginate(4);
+            })
+            ->paginate(4);
         foreach ($blogs as $blog) {
             $blog->image = Storage::url('blog_images/' . $blog->image);
             $blog->date = Carbon::parse($blog->created_at)->format('M d, Y');
