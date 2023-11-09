@@ -42,5 +42,31 @@ class ValidationRepository
       'quote.required'=>'Quote is mandatory']
     );
   }
+  public function apiLoginValidation($request)  {
+    return Validator::make($request->all(),[
+      'email' => 'bail|required|email',
+      'first_name' => 'bail|required',
+      'role' => 'bail|required',
+      'provider_name' => 'bail|required',
+      'provider_id'=> 'bail|required',
+    ],[
+      'first_name.required' => 'first_name is mandatory.',
+      'role.required' => 'Role is mandatory.',
+      'date.required' => 'Date is mandatory.',
+      'provider_name.required' => 'Provider name is mandatory.',
+      'provider_id.required' => 'Provider id is mandatory.',
+      'email.email' => 'Invalid email',
+    ]);
+  }
+
+  public function validateBlogLike($request)  {
+    return Validator::make($request->all(),[
+      'like'=>'bail|required',
+      'blog_id'=>'bail|required',
+    ],[
+    'like.required'=>'like is mandatory',
+    'blog_id.required'=>'blog id is mandatory']
+  );
+  }
 
 }

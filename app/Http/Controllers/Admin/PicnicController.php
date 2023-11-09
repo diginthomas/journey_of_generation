@@ -20,7 +20,7 @@ class PicnicController extends Controller
 
    public function picnicList(Request $request , CommonRepository $commonRepo)
    {
-      $columns = array('sl_no', 'title', 'location', 'date', 'status','action');
+      $columns = array('sl_no', 'title', 'location', 'date','no_joining', 'status','action');
       $limit = $request->input('length');
       $start = $request->input('start');
       $order = $columns[$request->input('order.0.column')];
@@ -73,7 +73,7 @@ class PicnicController extends Controller
             // $time = Carbon::parse($picnic->date)->format('H:i:s');
             $nestedData['date'] = $date;
             // $nested_data['time'] = $time;
-            // $nestedData['agenda'] = $picnic->agenda;
+            $nestedData['no_joining'] = $picnic->picnicMembers()->count();
             if ($picnic->status == 1) {
               $nestedData['status'] = config('buttons.active');
             } else {
@@ -157,7 +157,10 @@ class PicnicController extends Controller
     function viewPicnic($id, CommonRepository $commonRepo)
     {
         $picnic = $commonRepo->getPicnics(false)->find(base64_decode($id));
-        return view('picnic.view',compact('picnic'));
+        $picnicMembers = $picnic->picnicMembers();
+        $seniors = $picnicMembers->where('role',2)->count();
+        $volunteers = $picnicMembers->where('role',3)->count();
+        return view('picnic.view',compact('picnic','seniors','volunteers'));
     }
 
     public function deletePicnic(Request $request, CommonRepository $commonRepo)

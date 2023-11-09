@@ -100,18 +100,18 @@
                                             <div class="col-sm-4">
                                                 <div class="mt-4">
                                                     <p class="text-muted mb-0">No.Seniors:</>
-                                                  123
+                                                 {{$seniors}}
                                                 </div>
                                             </div>
                                             <div class="col-sm-4">
                                                 <div class="mt-4">
                                                     <p class="text-muted mb-0">No.Volunteers:</>
-                                                  100
+                                                 {{$volunteers}}
                                                 </div>
                                             </div> <div class="col-sm-4">
                                                 <div class="mt-4">
                                                     <p class="text-muted mb-0">Total Joining:</>
-                                                  223
+                                                 {{$seniors+$volunteers}}
                                                 </div>
                                             </div>
                                         </div>

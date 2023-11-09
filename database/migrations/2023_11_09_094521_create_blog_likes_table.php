@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('picnic_details', function (Blueprint $table) {
+        Schema::create('blog_likes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained('users');
-            $table->foreignId('picnic_id')->nullable()->constrained('picnics');
+            $table->foreignId('blog_id')->nullable()->constrained('blogs');
             $table->commonFields();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('picnic_details');
+        Schema::dropIfExists('blog_likes');
     }
 };

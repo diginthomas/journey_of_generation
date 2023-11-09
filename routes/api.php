@@ -1,23 +1,24 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\QuoteController;
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "api" middleware group. Make something great!
-|
-*/
+use App\Http\Controllers\Api\LoginController;
+use App\Http\Controllers\Api\BlogController;
+use App\Http\Controllers\Api\PicnicController;
 
 
+Route::post('quote/list',[QuoteController::class,'index']);
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('blog/list',[BlogController::class,'index']);
+Route::post('blog/view',[BlogController::class,'view']);
+
+Route::post('picnic/list',[PicnicController::class,'index']);
+Route::post('picnic/view',[PicnicController::class,'view']);
+
+Route::post('login',[LoginController::class,'index']);
+
+Route::middleware('validate.token:sanctum')->group(function(){
+    Route::post('blog/like',[BlogController::class,'likeBlog']);
+    Route::post('picnic/join',[PicnicController::class,'joinPicnic']);
+
 });
-
-Route::get('quotes',[QuoteController::class,'index']);
