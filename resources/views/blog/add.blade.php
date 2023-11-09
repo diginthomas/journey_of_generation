@@ -61,8 +61,6 @@
                                     </form>
                                 </div>
                             </div>
-
-
                         </div>
                      </div>
                     <!-- { Multi Column Forms } end -->
@@ -74,11 +72,11 @@
 @endsection
 
 @section('scripts')
-  <script>
-    var page = "addPage";
-    var id = 0;
-    var saveUrl = "{{route('saveBlog')}}";
-    $('#status').prop('checked', true).change();
-  </script>
-  <script src="{{asset('assets/web/js/blog.js')}}"></script>
+    <script>
+        var page = "addPage";
+        var id = 0;
+        var saveUrl = "{{route('saveBlog')}}";
+        $('#status').prop('checked', true).change();
+    </script>
+    <script src="{{asset('assets/web/js/blog.js')}}"></script>
 @endsection
