@@ -15,6 +15,7 @@ $(function() {
         { title: "Title", data: "title" },
         { title: "Location", data: "location" },
         { title: "Date", data: "date" },
+        { title: "No.Joining", data: "no_joining" },
         { title: "Status", data: "status" },
         { title: "Action", data: "action" },
     ];
