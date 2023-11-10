@@ -10,7 +10,6 @@ use App\Models\BlogLike;
 use Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use App\Http\Repositories\CommonRepository;
 use Illuminate\Support\Facades\Storage;
 
 class BlogController extends Controller
