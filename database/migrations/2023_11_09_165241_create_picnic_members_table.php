@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('picnic_details', function (Blueprint $table) {
+        Schema::create('picnic_members', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained('users');
             $table->foreignId('picnic_id')->nullable()->constrained('picnics');
+            $table->integer('role')->nullable()->comment('1=>Admin,2=>Senior,3=>Volunteer');
             $table->commonFields();
         });
     }
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('picnic_details');
+        Schema::dropIfExists('picnic_members');
     }
 };

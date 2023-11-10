@@ -10,6 +10,7 @@ use App\Models\BlogLike;
 use Auth;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Http\Repositories\CommonRepository;
 use Illuminate\Support\Facades\Storage;
 
 class BlogController extends Controller
@@ -27,11 +28,17 @@ class BlogController extends Controller
                 });
             })
             ->paginate(4);
+
         foreach ($blogs as $blog) {
             $blog->image = Storage::url('blog_images/' . $blog->image);
-            $blog->date = Carbon::parse($blog->created_at)->format('M d, Y');
+            $blog->formatted_date = Carbon::parse($blog->created_at)->format('M d, Y, h:i:a');
             $blog->likes = $blog->blogLikes()->count();
-            $blog->is_liked = $blog->blogLikes()->where('user_id', $userId)->exists();
+            if(!empty($userId)){
+                $isLiked = $blog->blogLikes()->where('user_id', $userId)->exists();
+            }else{
+                $isLiked =false;
+            }
+            $blog->is_liked = $isLiked;
         }
         $response = ['status' => 'success', 'data' => $blogs];
         return response()->json($response, 200);
@@ -62,5 +69,24 @@ class BlogController extends Controller
             $response = ['status' => 'success', 'message' => $message];
         }
         return response()->json($response, $statusCode);
+    }
+    public function view(Request $request, CommonRepository $commonRepo)
+    {
+        $userId = $this->getUserIdFromToken($request);
+        $blogID = $request->input('blog_id');
+        $blog = $commonRepo->getBlogs(true)->find($blogID);
+        if(!empty($blog)){
+            $blog->image = Storage::url('blog_images/' . $blog->image);
+            $blog->formatted_date = Carbon::parse($blog->created_at)->format('M d, Y, h:i:a');
+            $blog->likes = $blog->blogLikes()->count();
+            if(!empty($userId)){
+                $isLiked = $blog->blogLikes()->where('user_id', $userId)->exists();
+            }else{
+                $isLiked =false;
+            }
+            $blog->is_liked = $isLiked;
+        }
+        $response = ['status'=>'success','data'=>$blog];
+        return response()->json($response, 200);
     }
 }

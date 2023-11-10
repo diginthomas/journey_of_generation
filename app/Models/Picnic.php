@@ -14,8 +14,8 @@ class Picnic extends Model
 
     protected $guarded = [];
 
-    public function picnicDetails():HasMany
+    public function picnicMembers():HasMany
     {
-        return $this->hasMany(PicnicDetails::class,'picnic_id');
+        return $this->hasMany(PicnicMember::class,'picnic_id');
     }
 }
