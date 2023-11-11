@@ -3,7 +3,27 @@ $(function() {
 
     var rowId = '';
     if (page == 'listPage') {
-  
+        var today = new Date();
+        datePicker(today);
+        function datePicker(start_time) {
+            $('#date').daterangepicker({
+                singleDatePicker: true,
+                timePicker: false,
+                autoUpdateInput: false,
+                showDropdowns: false,
+                 locale: {
+                    format: 'MMMM D, YYYY'
+                },
+                startDate: start_time,
+                maxDate: moment().startOf('day'), // min date will be always today
+            });
+    
+            $('#date').on('apply.daterangepicker', function(ev, picker) {
+                $(this).val(picker.startDate.format('MMMM D, YYYY'));
+            });
+        }
+        
+
       const tableColumns = [
           {
               title: "#",
@@ -14,10 +34,10 @@ $(function() {
           },
           { title: "Name", data: "name" },
           { title: "Email", data: "email" },
-          { title: "Phone", data: "phone" },
-          { title: "Address", data: "address" },
-          { title: "Dob", data: "dob" },
-          { title: "Location", data: "location" },
+          { title: "phone", data: "email" },
+          { title: "date", data: "date" },
+          { title: "steps", data: "steps" },
+          { title: "distance", data: "distance" },
           { title: "Status", data: "status" },
         //   { title: "Action", data: "action" },
       ];

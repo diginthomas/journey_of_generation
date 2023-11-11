@@ -28,6 +28,15 @@
           </ul> -->
         </li>
 
+        <li class="nav-item nav-hasmenu  {{in_array($current_route,['walk'])? 'active' : ''}}">
+          <a href="#!" class="nav-link"><span class="nav-icon"><i data-feather="heart"></i></span><span
+              class="nav-text">Walk Goals</span><span class="nav-arrow"><i data-feather="chevron-right"></i></span></a>
+          <ul class="nav-submenu">
+            <li class="nav-item">
+              <a class="nav-link" href="{{route('walk')}}">List</a>
+            </li>
+          </ul>
+        </li>
         <li class="nav-item nav-hasmenu  {{in_array($current_route,['quote'])? 'active' : ''}}">
           <a href="#!" class="nav-link"><span class="nav-icon"><i data-feather="calendar"></i></span><span
               class="nav-text">Quotes</span><span class="nav-arrow"><i data-feather="chevron-right"></i></span></a>

@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\QuoteController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\SeniorController;
 use App\Http\Controllers\Admin\VolunteerController;
+use App\http\Controllers\Admin\WalkGoalController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LoginController::class, 'index'])->name('login');
@@ -61,6 +62,10 @@ Route::middleware('auth')->group(function () {
         Route::get('volunteers','index')->name('volunteers');
         Route::post('volunteers/list','volunteerList')->name('volunteerList');
 
+    });
+    Route::controller(WalkGoalController::class)->group(function(){
+        Route::get('walk','index')->name('walk');
+        Route::post('walk/list','walkList')->name('walkList');
     });
 
 

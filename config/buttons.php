@@ -5,6 +5,7 @@
    'active' => '<small class="badge bg-success">Active</small>',
    'inactive' => '<small class="badge bg-danger">Inactive</small>',
    'completed' => '<small class="badge bg-info">Completed</small>',
+   'onProgress' => '<small class="badge bg-warning">On Progress</small>',
 
    'add-icon' => '<i class="fas fa-plus"></i>',
    'add-class' => 'btn btn-primary addplus-btn float-right',
