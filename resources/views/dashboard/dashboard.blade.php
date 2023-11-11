@@ -182,7 +182,10 @@
 @endsection
 
 @section('scripts')
-
+<script>
+  var getPicnic = "{{route('getLatestPicnic')}}"; 
+</script>
+<script src="{{asset('assets/web/js/dashboard.js')}}"></script>
 
 @endsection
 <div class="theme-roller">
