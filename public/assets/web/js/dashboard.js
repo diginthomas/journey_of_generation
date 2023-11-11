@@ -10,6 +10,7 @@ $(function(){
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
       },
       success:function(response) {
+
         var picnicTableHtml = '';
 
         picnicTableHtml = '<div class="col-12">'+
@@ -56,11 +57,13 @@ $(function(){
                             val.location+
                           '</td>'+
                           '<td>'+
-                            moment(val.date).format("MMMM D, YYYY")+
+                            moment(val.date).format("MMM D, YYYY")+
                           '</td>'+
-                          // '<td>'+
-                          //
-                          // '</td>'+
+                          '<td>'+
+                            '<a href="javascript:void(0)" class="view-picnic" data-id="'+val.id+'" title="View">'+
+                              '<i class="far fa-eye"></i>'+
+                            '</a>'+
+                          '</td>'+
                         '</tr>';
                       });
                     } else {
@@ -84,5 +87,11 @@ $(function(){
       },
     });
   }
+
+  $(document).on('click', '.view-picnic', function(e){
+    e.preventDefault();
+    var url = viewPicnicURL + '/' + $(this).attr('data-id');
+    window.open(url);
+  });
 
 });

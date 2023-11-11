@@ -104,7 +104,7 @@
                         </div>
                     </div>
                     <div class="row  picnic-table">
-                      
+
                     </div>
                 </div>
             </div>
@@ -161,6 +161,7 @@
 @section('scripts')
 <script>
   var getPicnicURL = "{{route('getLatestPicnic')}}";
+  var viewPicnicURL = "{{route('viewPicnic', '')}}";
 </script>
 <script src="{{asset('assets/web/js/dashboard.js')}}"></script>
 

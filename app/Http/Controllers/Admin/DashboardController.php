@@ -24,6 +24,10 @@ class DashboardController extends Controller
         ->orderBy('date', 'asc')
         ->take(5)
         ->get();
+      // foreach ($picnics as $picnic) {
+      //   $picnic->id = base64_encode($picnic->id);
+      // }
+      // dd($picnics);
       $jsonArray = ['status' => 'success', 'picnics' => $picnics];
       return response()->json($jsonArray);
     }
