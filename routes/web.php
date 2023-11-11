@@ -38,6 +38,7 @@ Route::middleware('auth')->group(function () {
         Route::get('picnic/edit/{id}','editPicnic')->name('editPicnic');
         Route::get('picnic/view/{id}','viewPicnic')->name('viewPicnic');
         Route::post('picnic/delete','deletePicnic')->name('deletePicnic');
+        Route::post('picnic/view/members','viewPicnicMembers')->name('viewPicnicMembers');
      });
 
      Route::controller(QuoteController::class)->group(function(){
