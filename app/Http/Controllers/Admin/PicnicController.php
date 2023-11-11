@@ -28,7 +28,7 @@ class PicnicController extends Controller
       $search = $request->input('search.value');
       $totalData = $commonRepo->getPicnics(false)->count();
 
-      $picnics = $commonRepo->getPicnics(false)
+      $picnics = $commonRepo->getPicnics(false)->latest()
           ->when($order == 'sl_no', function ($query) use ($dir) {
               $query->orderBy('created_at', $dir);
           })
@@ -44,6 +44,7 @@ class PicnicController extends Controller
                       ->orWhere('location','LIKE',"%{$search}%");
               });
           });
+
 
       if (empty($search)) {
           $totalFiltered = $totalData;

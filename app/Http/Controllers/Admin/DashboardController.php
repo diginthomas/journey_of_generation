@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Repositories\CommonRepository;
 use App\Models\User;
 use Auth;
+use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
@@ -18,7 +19,11 @@ class DashboardController extends Controller
 
     public function getPicnic(CommonRepository $commonRepo)
     {
-      $picnics = $commonRepo->getPicnics(true)->take(5)->get();
+      $picnics = $commonRepo->getPicnics(true)
+        ->whereDate('date', '>', Carbon::today())
+        ->orderBy('date', 'asc')
+        ->take(5)
+        ->get();
       $jsonArray = ['status' => 'success', 'picnics' => $picnics];
       return response()->json($jsonArray);
     }
