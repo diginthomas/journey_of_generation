@@ -5,6 +5,7 @@ use App\Models\User;
 use App\Models\Picnic;
 use App\Models\Quote;
 use App\Models\Blog;
+use App\Models\PicnicMember;
 use Auth;
 
 class CommonRepository
@@ -44,6 +45,15 @@ class CommonRepository
     })
     ->select('id', 'title', 'description', 'image', 'status', 'created_by', 'created_at')
     ->latest();
+  }
+  public function getPicnicMembers($picnicId)  {
+       return PicnicMember::where('picnic_id',$picnicId)
+          ->leftJoin('users','users.id','=','picnic_members.user_id')
+          ->select('picnic_members.id', 'picnic_members.role', 'picnic_members.created_at','users.email','users.first_name','users.last_name','users.phone')
+          // ->with([
+          //   'user:id,first_name,last_name'
+          // ])
+          ->latest();
   }
 
 }
