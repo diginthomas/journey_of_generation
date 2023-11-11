@@ -36,6 +36,9 @@ $(function(){
                       '<th>'+
                         'Date'+
                       '</th>'+
+                      '<th>'+
+                        'Action'+
+                      '</th>'+
                     '</tr>'+
                   '</thead>'+
                   '<tbody>';
@@ -55,6 +58,9 @@ $(function(){
                           '<td>'+
                             moment(val.date).format("MMMM D, YYYY")+
                           '</td>'+
+                          // '<td>'+
+                          //
+                          // '</td>'+
                         '</tr>';
                       });
                     } else {
