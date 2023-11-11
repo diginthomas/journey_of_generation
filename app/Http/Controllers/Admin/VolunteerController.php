@@ -6,7 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Repositories\CommonRepository;
 use Carbon\Carbon;
-
+use App\Models\PicnicMember;
+use Auth;
 class VolunteerController extends Controller
 {
     private $role ;
@@ -20,7 +21,7 @@ class VolunteerController extends Controller
     }
     public function volunteerList(Request $request, CommonRepository $commonRepo)
     {
-        $columns = array('sl_no', 'name', 'email', 'phone', 'address','dob','location','status','action');
+        $columns = array('sl_no', 'name', 'email', 'phone', 'address','dob','location','status','experience');
         $limit = $request->input('length');
         $start = $request->input('start');
         $order = $columns[$request->input('order.0.column')];
@@ -70,10 +71,11 @@ class VolunteerController extends Controller
                 } else {
                   $nestedData['status'] = config('buttons.inactive');
                 }
-                $nestedData['action'] = '';
+                $nestedData['experience'] = PicnicMember::where('user_id',$user->id)->count();
+                // $nestedData['action'] = '';
     
-                $nestedData['action'] .= '<a href=""
-                class="'.config('buttons.view-class').'" title="View"> '.config('buttons.view-icon').'</a>&nbsp;&nbsp;';
+                // $nestedData['action'] .= '<a href=""
+                // class="'.config('buttons.view-class').'" title="View"> '.config('buttons.view-icon').'</a>&nbsp;&nbsp;';
     
                 // $nestedData['action'] .= '<a href="'.route('editPicnic', base64_encode($picnic->id)).'"
                 // class="'.config('buttons.edit-class').'" title="Edit"> '.config('buttons.edit-icon').'</a>&nbsp;&nbsp;';
