@@ -17,12 +17,12 @@ $(function() {
                 startDate: start_time,
                 maxDate: moment().startOf('day'), // min date will be always today
             });
-    
+
             $('#date').on('apply.daterangepicker', function(ev, picker) {
                 $(this).val(picker.startDate.format('MMMM D, YYYY'));
             });
         }
-        
+
 
       const tableColumns = [
           {
@@ -41,10 +41,10 @@ $(function() {
           { title: "Status", data: "status" },
         //   { title: "Action", data: "action" },
       ];
-      const picnicTable = $('#picnic-list-table').DataTable({
+      const walkTable = $('#walk-list-table').DataTable({
           language: {
               "processing": "<i class='fa fa-refresh fa-spin'></i>",
-              "emptyTable": "<div class='alert alert-info text-center'>No Seniors  found</div>"
+              "emptyTable": "<div class='alert alert-info text-center'>No walk found</div>"
           },
           lengthMenu: [[10, 25, 50, 100, 500], [10, 25, 50, 100, 500]],
           dom: 'lfBrtip',
@@ -70,13 +70,13 @@ $(function() {
               "data": function (d) {
                   return $.extend({}, d, {
                       "_token": $('meta[name="csrf-token"]').attr("content"),
-  
+
                   });
               }
           },
           "columns": tableColumns
       });
-  
+
     //   $(document).on("click", '.delete-btn', function(){
     //     Swal.fire({
     //         title: 'Are you sure?',
@@ -130,8 +130,7 @@ $(function() {
     //         }
     //     })
     //   });
-  
-    } 
-  
+
+    }
+
   });
-  
