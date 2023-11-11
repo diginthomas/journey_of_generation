@@ -25,7 +25,9 @@ class PicnicController extends Controller
                     $subquery->orWhere('title', 'LIKE', "%{$search}%")
                         ->orWhere('location', 'LIKE', "%{$search}%");
                 });
-            })->paginate(4);
+            })
+            ->orderBy('date', 'asc')
+            ->paginate(4);
 
         foreach ($picnics as $picnic) {
             $picnic->image = Storage::url('picnic_images/' . $picnic->image);

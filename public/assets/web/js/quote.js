@@ -65,6 +65,7 @@ $(function() {
               var params = {
                 'id' : $(this).attr('data-id')
               };
+              $('#cover-spin').show();
               $.ajax({
                   type: "POST",
                   url: deleteUrl,
@@ -73,6 +74,7 @@ $(function() {
                       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                   },
                   success: function (output) {
+                      $('#cover-spin').hide();
                       if (output.status == "success") {
                           Swal.fire({
                               title: "Deleted",
@@ -113,6 +115,7 @@ $(function() {
 
 
     function saveQuote(quote,id){
+        $('#cover-spin').show();
         $.ajax({
             type: "POST",
             url: saveUrl,
@@ -124,6 +127,7 @@ $(function() {
                 "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
             },
             success:function(output) {
+              $('#cover-spin').hide();
               if (output.status == 'success') {
                 Swal.fire({
                     title: 'Success!',

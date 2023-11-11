@@ -68,6 +68,7 @@ $(function() {
               var params = {
                 'id' : $(this).attr('data-id')
               };
+              $('#cover-spin').show();
               $.ajax({
                   type: "DELETE",
                   url: deleteUrl,
@@ -76,6 +77,7 @@ $(function() {
                       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                   },
                   success: function (output) {
+                      $('#cover-spin').hide();
                       if (output.status == "success") {
                           Swal.fire({
                               title: "Deleted",
@@ -127,6 +129,7 @@ $(function() {
         },
       },
       submitHandler:function(form, e) {
+        $('#cover-spin').show();
         e.preventDefault();
         var formData = new FormData(form);
         $.ajax({
@@ -140,6 +143,7 @@ $(function() {
               "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
           },
           success:function(response) {
+            $('#cover-spin').hide();
             if (response.status == 'success') {
               Swal.fire({
                   title: 'Success!',
