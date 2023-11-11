@@ -11,7 +11,6 @@ use App\Http\Controllers\Admin\SeniorController;
 use App\Http\Controllers\Admin\VolunteerController;
 use Illuminate\Support\Facades\Route;
 
-
 Route::get('/', [LoginController::class, 'index'])->name('login');
 Route::post('login', [LoginController::class, 'authenticate'])->name('authenticate');
 
@@ -65,6 +64,3 @@ Route::middleware('auth')->group(function () {
 
 
     });
-    
-   
-

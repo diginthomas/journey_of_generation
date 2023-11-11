@@ -9,10 +9,11 @@ use Carbon\Carbon;
 
 class QuoteController extends Controller
 {
-    public function index(CommonRepository $commonRepo){
+    public function index(CommonRepository $commonRepo)
+    {
         $quotes = $commonRepo->getQuotes()
             ->where('created_at','>=',Carbon::today())
             ->get();
-        return response()->json($quotes);    
+        return response()->json($quotes);
     }
 }

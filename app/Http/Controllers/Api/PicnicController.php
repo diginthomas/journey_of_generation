@@ -18,7 +18,7 @@ class PicnicController extends Controller
     {
         $search = $request->input('search');
         $userId = $this->getUserIdFromToken($request);
-        $picnics = $commonRepo->getPicnics()
+        $picnics = $commonRepo->getPicnics(true)
             ->where('date', '>', Carbon::today())
             ->when($search != '', function ($query) use ($search) {
                 $query->where(function ($subquery) use ($search) {
@@ -38,7 +38,7 @@ class PicnicController extends Controller
     {
         $userId = $this->getUserIdFromToken($request);
         $picnicId = $request->input('picnic_id');
-        $picnic = $commonRepo->getPicnics()->find($picnicId);
+        $picnic = $commonRepo->getPicnics(true)->find($picnicId);
         if (!empty($picnic)) {
             $picnic->image = Storage::url('picnic_images/' . $picnic->image);
             $picnic->formatted_date = Carbon::parse($picnic->date)->format('M d, Y, h:i:a');
@@ -55,7 +55,7 @@ class PicnicController extends Controller
     public function joinPicnic(Request $request, CommonRepository $commonRepo)
     {
         $user = auth('sanctum')->user();
-        $picnic = $commonRepo->getPicnics()->find($request->input('picnic_id'));
+        $picnic = $commonRepo->getPicnics(true)->find($request->input('picnic_id'));
         if (!empty($picnic)) {
             $formData = $request->all();
             $formData['user_id'] = $user->id;

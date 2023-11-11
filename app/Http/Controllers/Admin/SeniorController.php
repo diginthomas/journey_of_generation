@@ -20,7 +20,7 @@ class SeniorController extends Controller
     }
     public function seniorList(Request $request, CommonRepository $commonRepo)
     {
-        $columns = array('sl_no', 'name', 'email', 'phone', 'address','dob','location','status','action');
+        $columns = array('sl_no', 'name', 'email', 'phone', 'address','dob','location','status');
         $limit = $request->input('length');
         $start = $request->input('start');
         $order = $columns[$request->input('order.0.column')];
@@ -72,8 +72,8 @@ class SeniorController extends Controller
                 }
                 $nestedData['action'] = '';
     
-                $nestedData['action'] .= '<a href=""
-                class="'.config('buttons.view-class').'" title="View"> '.config('buttons.view-icon').'</a>&nbsp;&nbsp;';
+                // $nestedData['action'] .= '<a href=""
+                // class="'.config('buttons.view-class').'" title="View"> '.config('buttons.view-icon').'</a>&nbsp;&nbsp;';
     
                 // $nestedData['action'] .= '<a href="'.route('editPicnic', base64_encode($picnic->id)).'"
                 // class="'.config('buttons.edit-class').'" title="Edit"> '.config('buttons.edit-icon').'</a>&nbsp;&nbsp;';
