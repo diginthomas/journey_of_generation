@@ -15,8 +15,13 @@ Route::get('/', [LoginController::class, 'index'])->name('login');
 Route::post('login', [LoginController::class, 'authenticate'])->name('authenticate');
 
 Route::middleware('auth')->group(function () {
-    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashBoard');
+
     Route::get('logout', [LoginController::class, 'logout'])->name('logout');
+    
+    Route::group(['controller' => DashboardController::class], function(){
+        Route::get('dashboard', 'index')->name('dashBoard');
+        Route::post('dashboard/latest/picnic', 'getPicnic')->name('getLatestPicnic');
+    });
 
     Route::controller(ProfileController::class)->group(function(){
         Route::get('profile', 'index')->name('profile');

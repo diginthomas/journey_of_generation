@@ -16,8 +16,7 @@ class CommonRepository
     return Picnic::when($active == true, function($query){
         $query->where('status', 1);
       })
-      ->select('id', 'title', 'location', 'image', 'date', 'description', 'agenda', 'status')
-      ->latest();
+      ->select('id', 'title', 'location', 'image', 'date', 'description', 'agenda', 'status');
   }
 
   public function getUsers($active = true,$role)

@@ -29,7 +29,7 @@ class PicnicController extends Controller
       $search = $request->input('search.value');
       $totalData = $commonRepo->getPicnics(false)->count();
 
-      $picnics = $commonRepo->getPicnics(false)
+      $picnics = $commonRepo->getPicnics(false)->latest()
           ->when($order == 'sl_no', function ($query) use ($dir) {
               $query->orderBy('created_at', $dir);
           })
@@ -45,6 +45,7 @@ class PicnicController extends Controller
                       ->orWhere('location','LIKE',"%{$search}%");
               });
           });
+
 
       if (empty($search)) {
           $totalFiltered = $totalData;
@@ -86,15 +87,15 @@ class PicnicController extends Controller
             }else{
               $nestedData['status'] = config('buttons.completed');
             }
-            
+
             $nestedData['action'] = '';
 
-            $nestedData['action'] .= '<a href="'.route('viewPicnic', base64_encode($picnic->id)).'"
+            $nestedData['action'] .= '<a href="'.route('viewPicnic', $picnic->id).'"
             class="'.config('buttons.view-class').'" title="View"> '.config('buttons.view-icon').'</a>&nbsp;&nbsp;';
             if($isNotCompleted){
               $nestedData['action'] .= '<a href="'.route('editPicnic', base64_encode($picnic->id)).'"
               class="'.config('buttons.edit-class').'" title="Edit"> '.config('buttons.edit-icon').'</a>&nbsp;&nbsp;';
-  
+
               $nestedData['action'] .= '<a href="javascript:void(0)" data-id="'.$picnic->id.'"
               class="'.config('buttons.delete-class').'" title="Delete"> '.config('buttons.delete-icon').'</a>&nbsp;&nbsp;';
             }
@@ -168,7 +169,7 @@ class PicnicController extends Controller
 
     function viewPicnic($id, CommonRepository $commonRepo)
     {
-        $picnic = $commonRepo->getPicnics(false)->find(base64_decode($id));
+        $picnic = $commonRepo->getPicnics(false)->find($id);
         $volunteers = PicnicMember::where('picnic_id',$picnic->id)->where('role',3)->count();
         $seniors =  PicnicMember::where('picnic_id',$picnic->id)->where('role',2)->count();
         return view('picnic.view',compact('picnic','seniors','volunteers'));
@@ -189,7 +190,7 @@ class PicnicController extends Controller
         $dir = $request->input('order.0.dir');
         $search = $request->input('search.value');
         $totalData = $commonRepo->getPicnicMembers($picnicId)->count();
-       
+
         $picnicMembers = $commonRepo->getPicnicMembers($picnicId)
             ->when($order == 'sl_no', function ($query) use ($dir) {
               $query->orderBy('created_at', $dir);
@@ -233,18 +234,18 @@ class PicnicController extends Controller
                 $date = Carbon::parse($member->created_at)->format('M d, Y H:i:s');
                 $nestedData['joining_date'] = $date;
                 $data[] = $nestedData;
-              
+
             }
         }
-    
+
         $jsonArray = array(
             "draw" => intval($request->input('draw')),
             "recordsTotal" => intval($totalData),
             "recordsFiltered" => intval($totalFiltered),
             "data" => $data,
-    
+
         );
-        return response()->json($jsonArray);   
-        
+        return response()->json($jsonArray);
+
     }
 }

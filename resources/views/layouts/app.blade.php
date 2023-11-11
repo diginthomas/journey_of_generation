@@ -11,8 +11,8 @@
         <div class="loader-fill"></div>
       </div>
     </div>
-
-
+    <div id="cover-spin"></div>
+    
     @include('layouts.sidemenu')
 
     <div id="content">
