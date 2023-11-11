@@ -5,7 +5,9 @@
 @endsection
 
 @inject('carbon', 'Carbon\Carbon')
-
+@php
+    $isNotCompleted = $picnic->date > $carbon::today();
+@endphp
 @section('content')
 <div class="page-content-wrapper">
     <div class="content-container">
@@ -25,8 +27,9 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="float-end">
+                                    @if ($isNotCompleted)
                                     <a href="{{route('editPicnic', base64_encode($picnic->id))}}" class="btn btn-sm btn-primary me-2"><i class="ti ti-pencil"></i>Edit</a>
-
+                                    @endif
                                 </div>
                                 <h4 class="mb-3"><i data-feather="map-pin"></i> {{$picnic->location}}</h4>
                                 <div class="row">
@@ -89,11 +92,16 @@
                                         </div>
                                         <div class="mt-4">
                                             <h6>Status</h6>
-                                            @if($picnic->status == 1)
-                                              {!!config('buttons.active')!!}
-                                            @else
-                                              {!!config('buttons.inactive')!!}
+                                            @if ($isNotCompleted)
+                                                @if($picnic->status == 1)
+                                                {!!config('buttons.active')!!}
+                                                @else
+                                                {!!config('buttons.inactive')!!}
+                                                @endif 
+                                            @else  
+                                            {!!config('buttons.completed')!!}
                                             @endif
+                                           
                                             </p>
                                         </div>
                                         <div class="row mt-6">
@@ -126,7 +134,31 @@
                    </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card table-card">
+                        <div class="card-header">
+                            <h4>Picnic Members </h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table" id="picnic-members-table">
+                                  
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+@endsection
+@section('scripts')
+  <script>
+    var page = "viewPage";
+    var id = "{{$picnic->id}}";
+    var listUrl = '{{route('viewPicnicMembers')}}';
+  </script>
+  <script src="{{asset('assets/web/js/picnic.js')}}"></script>
 @endsection
