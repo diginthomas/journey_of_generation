@@ -225,10 +225,12 @@ class PicnicController extends Controller
                 $nestedData['name'] = $member->first_name." ".$member->last_name;
                 $nestedData['email'] = $member->email;
                 $nestedData['phone']= $member->phone;
-                if($member->role=='2'){
+                if($member->role==2){
                   $role = 'Senior';
                 }else if($member->role==3){
                   $role = 'Volunteer';
+                }else if($member->role == 1){
+                  $role = 'Admin';
                 }
                 $nestedData['role']= $role;
                 $date = Carbon::parse($member->created_at)->format('M d, Y H:i:s');
