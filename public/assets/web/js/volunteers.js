@@ -19,7 +19,7 @@ $(function() {
           { title: "Dob", data: "dob" },
           { title: "Location", data: "location" },
           { title: "Status", data: "status" },
-          { title: "Action", data: "action" },
+          { title: "Experience", data: "experience" },
       ];
       const picnicTable = $('#picnic-list-table').DataTable({
           language: {
@@ -31,7 +31,7 @@ $(function() {
           "order": [[ 0, "asc" ]], //set the default order on # column
           'columnDefs': [
               {
-              'targets': [0,2,3], /* column indexes starts with 0 */
+              'targets': [0,1,8], /* column indexes starts with 0 */
               'orderable': true, /* true or false - to configure sorting*/
               },
               {
