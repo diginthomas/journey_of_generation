@@ -19,7 +19,7 @@ class LoginController extends Controller
         if ($validationRepo->apiLoginValidation($request)->fails()) {
             $response = [
                 'status' => 'validationError',
-                'messages' => $validationRepo->blogFormValidation($request)->messages()
+                'messages' => $validationRepo->apiLoginValidation($request)->messages()
             ];
             $statusCode = 403;
         } else {
