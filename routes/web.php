@@ -18,9 +18,10 @@ Route::post('login', [LoginController::class, 'authenticate'])->name('authentica
 Route::middleware('auth')->group(function () {
 
     Route::get('logout', [LoginController::class, 'logout'])->name('logout');
-    
+
     Route::group(['controller' => DashboardController::class], function(){
         Route::get('dashboard', 'index')->name('dashBoard');
+        Route::post('dashboard/chart/data', 'getChart')->name('getChartData');
         Route::post('dashboard/latest/picnic', 'getPicnic')->name('getLatestPicnic');
     });
 

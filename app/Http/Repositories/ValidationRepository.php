@@ -35,14 +35,16 @@ class ValidationRepository
     ]);
   }
 
-  public function quoteFormValidation($request): object{
+  public function quoteFormValidation($request): object
+  {
     return Validator::make($request->all(),[
         'quote'=>'bail|required',
       ],[
-      'quote.required'=>'Quote is mandatory']
-    );
+      'quote.required'=>'Quote is mandatory'
+    ]);
   }
-  public function apiLoginValidation($request)  {
+  public function apiLoginValidation($request): object
+  {
     return Validator::make($request->all(),[
       'email' => 'bail|required|email',
       'first_name' => 'bail|required',
@@ -52,21 +54,32 @@ class ValidationRepository
     ],[
       'first_name.required' => 'first_name is mandatory.',
       'role.required' => 'Role is mandatory.',
-      'date.required' => 'Date is mandatory.',
+      'email.required' => 'Email is mandatory.',
+      'email.email' => 'Invalid email',
       'provider_name.required' => 'Provider name is mandatory.',
       'provider_id.required' => 'Provider id is mandatory.',
-      'email.email' => 'Invalid email',
     ]);
   }
 
-  public function validateBlogLike($request)  {
+  public function validateBlogLike($request): object
+   {
+      return Validator::make($request->all(),[
+        'like'=>'bail|required',
+        'blog_id'=>'bail|required',
+      ],[
+      'like.required'=>'like is mandatory',
+      'blog_id.required'=>'blog id is mandatory'
+    ]);
+  }
+
+  public function joinPicnicFormValidation($request): object
+  {
     return Validator::make($request->all(),[
-      'like'=>'bail|required',
-      'blog_id'=>'bail|required',
+      'picnic_id' => 'bail|required|exists:picnics,id,deleted_at,NULL',
     ],[
-    'like.required'=>'like is mandatory',
-    'blog_id.required'=>'blog id is mandatory']
-  );
+      'picnic_id.required' => 'Picnic is mandatory.',
+      'picnic_id.exists' => 'Invalid picnic.'
+    ]);
   }
 
 }
