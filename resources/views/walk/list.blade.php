@@ -23,12 +23,14 @@
                 <div class="col-12">
                     <div class="card table-card">
                         <div class="card-header">
-                            <h4>Senior Walk Table </h4><span style="float: right;">  <input type="text" id="date" class="form-control"  name="date" /></span>
+                            <h4>Senior Walk Table </h4><span style="float: right;">
+                              <!-- <input type="text" id="date" class="form-control"  name="date" /> -->
+                            </span>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table" id="picnic-list-table">
-                                 
+                                <table class="table" id="walk-list-table">
+
                                 </table>
                             </div>
                         </div>

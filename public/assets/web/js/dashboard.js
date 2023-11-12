@@ -1,5 +1,76 @@
 $(function(){
 
+  getChartData();
+
+  function getChartData() {
+    $.ajax({
+      type: "POST",
+      url: charURL,
+      headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      success:function(output) {
+        if (output.status == 'success') {
+
+          var totalSeniors = output.totalSeniors;
+          var totalVolunteers = output.totalVolunteers;
+
+          Highcharts.chart('chart-data', {
+              chart: {
+                  type: 'column'
+              },
+              title: {
+                  text: 'Picnics joins of ' +output.currentYear,
+                  align: 'center'
+              },
+              xAxis: {
+                  categories: [
+                      'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+                  ],
+                  crosshair: true,
+                  accessibility: {
+                      description: 'Month'
+                  }
+              },
+              yAxis: {
+                  min: 0,
+                  title: {
+                      text: 'Total Join'
+                  }
+              },
+              tooltip: {
+                  crosshairs: true,
+                  shared: true
+              },
+
+              plotOptions: {
+                  column: {
+                      pointPadding: 0.2,
+                      borderWidth: 0
+                  }
+              },
+              series: [
+                {
+                   name: 'Seniors',
+                   data: totalSeniors
+                },
+                {
+                   name: 'Volunteers',
+                   data: totalVolunteers
+                },
+              ]
+          });
+        } else {
+          $('#chart-data').html(output.errorHtml);
+        }
+      },
+      error:function(error) {
+        console.log('Something went wrong!');
+      }
+    });
+  }
+
   getPicnic();
 
   function getPicnic() {
@@ -68,7 +139,7 @@ $(function(){
                       });
                     } else {
                       picnicTableHtml += '<tr>'+
-                        '<td>'+
+                        '<td class="dashboard-error-heading">'+
                           'No picnic found!'
                         '</td>'+
                       '</tr>';

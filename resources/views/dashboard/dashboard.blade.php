@@ -103,8 +103,19 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="card table-card">
+                          <figure class="highcharts-figure">
+                            <div id="chart-data">
+                              <!-- Data from dashboard.js file -->
+                            </div>
+                          </figure>
+                        </div>
+                      </div>
+                    </div>
                     <div class="row  picnic-table">
-
+                      <!-- Data from dashboard.js file -->
                     </div>
                 </div>
             </div>
@@ -160,9 +171,14 @@
 
 @section('scripts')
 <script>
-  var getPicnicURL = "{{route('getLatestPicnic')}}";
-  var viewPicnicURL = "{{route('viewPicnic', '')}}";
+  var charURL = "{{ route('getChartData') }}";
+  var getPicnicURL = "{{ route('getLatestPicnic') }}";
+  var viewPicnicURL = "{{ route('viewPicnic', '') }}";
 </script>
 <script src="{{asset('assets/web/js/dashboard.js')}}"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
 @endsection

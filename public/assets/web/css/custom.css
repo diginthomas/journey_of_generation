@@ -2,7 +2,7 @@
     color: red;
 }
 
-/* Secondary Spinner Style [starts] */
+/* Loader Spinner Style [starts] */
 
 #cover-spin {
     position:fixed;
@@ -38,4 +38,18 @@
     animation: spin .8s linear infinite;
 }
 
-/* Secondary Spinner Style [ends] */
+/* Loader Spinner Style [ends] */
+
+/* Dashboard style [starts]*/
+
+.dashboard-error-chart {
+    margin-left: 16px;
+    /* padding: 14px; */
+}
+
+.dashboard-error-heading {
+    font-size: 14px;
+    color: red;
+}
+
+/* Dashboard style [ends]*/
