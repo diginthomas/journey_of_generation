@@ -74,15 +74,15 @@ class WalkGoalController extends Controller
                 $data[] = $nestedData;
             }
         }
-    
+
         $jsonArray = array(
             "draw" => intval($request->input('draw')),
             "recordsTotal" => intval($totalData),
             "recordsFiltered" => intval($totalFiltered),
             "data" => $data,
-    
+
         );
         return response()->json($jsonArray);
-      
+
     }
 }
