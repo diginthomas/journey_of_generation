@@ -52,7 +52,7 @@ class BlogController extends Controller
             ];
             $statusCode = 403;
         } else {
-            $userId = Auth::id();
+            $userId = auth('sanctum')->id();
             $blogID = $request->input('blog_id');
             $statusCode = 200;
             if ($request->input('like') == 1) {
