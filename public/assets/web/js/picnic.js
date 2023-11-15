@@ -15,7 +15,7 @@ $(function() {
         { title: "Title", data: "title" },
         { title: "Location", data: "location" },
         { title: "Date", data: "date" },
-        { title: "Agenda", data: "agenda" },
+        { title: "No.Joining", data: "no_joining" },
         { title: "Status", data: "status" },
         { title: "Action", data: "action" },
     ];
@@ -70,6 +70,7 @@ $(function() {
               var params = {
                 'id' : $(this).attr('data-id')
               };
+              $('#cover-spin').show();
               $.ajax({
                   type: "POST",
                   url: deleteUrl,
@@ -78,6 +79,7 @@ $(function() {
                       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                   },
                   success: function (output) {
+                      $('#cover-spin').hide();
                       if (output.status == "success") {
                           Swal.fire({
                               title: "Deleted",
@@ -138,6 +140,7 @@ $(function() {
     // form submition start
     $('#picnic_form').validate({
       submitHandler:function(form, e) {
+        $('#cover-spin').show();
         var formData = new FormData(form);
         e.preventDefault();
         $.ajax({
@@ -151,6 +154,7 @@ $(function() {
               "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
           },
           success:function(output) {
+            $('#cover-spin').hide();
             if (output.status == 'success') {
               Swal.fire({
                   title: 'Success!',
@@ -183,6 +187,59 @@ $(function() {
     });
     //form submition end
 
+  }
+
+  else if(page=='viewPage'){
+    const tableColumns = [
+        {
+            title: "#",
+            render: function (data, type, row, meta) {
+                // to increment the index number continuously even in next pages
+                return meta.row + meta.settings._iDisplayStart + 1;
+            },
+        },
+        { title: "Name", data: "name" },
+        { title: "Email", data: "email" },
+        { title: "Phone", data: "phone"},
+        { title: "user type", data: "role" },
+        { title: "Joining Date", data: "joining_date" },
+        
+    ];
+    const picnicTable = $('#picnic-members-table').DataTable({
+        language: {
+            "processing": "<i class='fa fa-refresh fa-spin'></i>",
+            "emptyTable": "<div class='alert alert-info text-center'>No members found</div>"
+        },
+        lengthMenu: [[10, 25, 50, 100, 500], [10, 25, 50, 100, 500]],
+        dom: 'lfBrtip',
+        "order": [[ 0, "asc" ]], //set the default order on # column
+        'columnDefs': [
+            {
+            'targets': [0], /* column indexes starts with 0 */
+            'orderable': true, /* true or false - to configure sorting*/
+            },
+            {
+            'targets': '_all', /* all columns except the 1st mentioned targets (otherwise all columns will be considered) */
+            'orderable': false, /* true or false - to configure sorting*/
+            "defaultContent": "-",
+            },
+        ],
+        scrollX: true,
+        "processing": true,
+        "serverSide": true,
+        "ajax": {
+            "url": listUrl,
+            "dataType": "json",
+            "type": "POST",
+            "data": function (d) {
+                return $.extend({}, d, {
+                    "_token": $('meta[name="csrf-token"]').attr("content"),
+                    'picnic_id':id
+                });
+            }
+        },
+        "columns": tableColumns
+    });
   }
 
 });

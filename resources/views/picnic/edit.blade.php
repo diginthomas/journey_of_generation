@@ -64,12 +64,12 @@
                                             </div>
                                             <div class="col-lg-4">
                                                 <label  class="form-label">Agenda:</label>
-                                                <input type="text" value="{{$picnic->agenda}}" name="agenda" class="form-control"  placeholder="Enter agenda">
+                                                <textarea  name="agenda" class="form-control"  placeholder="Enter agenda">{{$picnic->agenda}}</textarea>
                                             </div>
                                             <div class="col-lg-4">
                                                 <label class="form-label">Picnic image:</label>
-                                                <input type="file" name="image" class="form-control">
-
+                                                <input type="file" name="image" class="form-control" accept="image/png, image/jpeg, image/jpg">
+                                                <span><small>Supports .jpeg, .jpg, .png | Max 5 MB</small></span>
                                             </div>
                                         </div>
                                         <div class="form-group row">

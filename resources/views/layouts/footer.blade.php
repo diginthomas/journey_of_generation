@@ -148,6 +148,7 @@
             cancelButtonText: 'No'
         }).then((result) => {
             if (result.isConfirmed) {
+              toastr.success('Success', 'You have successfully logout!');
               window.location = '{{route('logout')}}';
             }
         });

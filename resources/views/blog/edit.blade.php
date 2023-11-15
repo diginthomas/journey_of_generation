@@ -35,7 +35,8 @@
                                             </div>
                                             <div class="col-lg-6">
                                                 <label class="form-label">Blog image:</label>
-                                                <input type="file" name="image" class="form-control">
+                                                <input type="file" name="image" class="form-control" accept="image/png, image/jpeg, image/jpg">
+                                                <span><small>Supports .jpeg, .jpg, .png | Max 5 MB</small></span>
                                             </div>
                                         </div>
                                         <div class="form-group row">

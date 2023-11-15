@@ -32,7 +32,9 @@ class User extends Authenticatable
         'city',
         'role',
         'status',
-        'password'
+        'password',
+        'provider_name',
+        'provider_id'
     ];
 
     /**
