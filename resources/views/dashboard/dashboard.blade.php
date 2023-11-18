@@ -126,7 +126,7 @@
 @endsection
 
 
-<div class="theme-roller">
+<!-- <div class="theme-roller">
   <div class="open-button">
     <button class="btn btn-primary" id="pct-toggler">
       <i data-feather="settings"></i>
@@ -166,7 +166,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 
 @section('scripts')

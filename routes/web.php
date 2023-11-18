@@ -9,8 +9,7 @@ use App\Http\Controllers\Admin\QuoteController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\SeniorController;
 use App\Http\Controllers\Admin\VolunteerController;
-use App\http\Controllers\Admin\WalkGoalController;
-use App\Http\Controllers\Admin\AssistanceController;
+use App\Http\Controllers\Admin\WalkGoalController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LoginController::class, 'index'])->name('login');
