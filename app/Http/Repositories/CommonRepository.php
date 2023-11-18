@@ -6,6 +6,7 @@ use App\Models\Picnic;
 use App\Models\Quote;
 use App\Models\Blog;
 use App\Models\PicnicMember;
+use App\Models\Assistance;
 use Auth;
 
 class CommonRepository
@@ -54,6 +55,16 @@ class CommonRepository
           //   'user:id,first_name,last_name'
           // ])
           ->latest();
+  }
+  public function getAssistanceList($status = '',$volunteerApproval= false){
+       return Assistance::with(['senior:id,first_name,last_name'])
+          ->when(!empty($status), function($query) use ($status) {
+            $query->where('status', $status);
+          })
+          ->where('volunteer_approval', $volunteerApproval)
+          ->select('id', 'message', 'created_at', 'senior_id', 'status',)
+          ->latest();
+
   }
 
 }
