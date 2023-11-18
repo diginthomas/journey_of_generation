@@ -21,16 +21,16 @@ class AssistanceController extends Controller
         $order = $columns[$request->input('order.0.column')];
         $dir = $request->input('order.0.dir');
         $search = $request->input('search.value');
-        $totalData = $commonRepo->getAssistanceList()->count();
+        $totalData = $commonRepo->getAssistanceList($status)->count();
         $assistanceList = $commonRepo->getAssistanceList($status)
             ->when($order == 'sl_no', function ($query) use ($dir) {
                 $query->orderBy('created_at', $dir);
             })
             ->when($search != '', function ($query) use ($search) {
-                // $query->where(function ($subquery) use ($search) {
-                //     $subquery->orWhere('first_name', 'LIKE', "%{$search}%")
-                //         ->orWhere('last_name','LIKE',"%{$search}%");
-                // });
+                $query->whereHas('senior', function ($subQuery) use($search){
+                    $subQuery->orWhere('first_name', 'LIKE', "%{$search}%")
+                      ->orWhere('last_name','LIKE',"%{$search}%");
+                });
             });
         if (empty($search)) {
             $totalFiltered = $totalData;

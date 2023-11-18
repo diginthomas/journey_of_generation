@@ -24,12 +24,13 @@ Route::middleware('validate.token:sanctum')->group(function(){
     Route::post('picnic/join',[PicnicController::class,'joinPicnic']);
 
     Route::controller(SeniorController::class)->group(function(){
-        Route::post('senior/assistance/request','requestAssistance')->middleware('senior');
-    });
+        Route::post('senior/assistance/request','requestAssistance');
+    })->middleware('senior');
 
     Route::controller(VolunteerController::class)->group(function(){
         Route::post('volunteer/assistance/list','getAssistanceList');
         Route::post('volunteer/assistance/accept','acceptAssistanceRequest');
+        Route::post('volunteer/assistance/reject','rejectAssistance');
     })->middleware('volunteer');
 
 });
