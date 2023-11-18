@@ -34,6 +34,14 @@ class LoginController extends Controller
         }
         return response()->json($response,$statusCode);
     }
+
+    public function logout()
+    {
+        $user = auth('sanctum')->user();
+        $user->tokens()->delete();
+        return response()->json(['status' => 'success','message' => 'Successfully logged out']);
+    }
+
     protected function validateProvider($provider)
     {
         if (!in_array($provider, ['facebook', 'google'])) {

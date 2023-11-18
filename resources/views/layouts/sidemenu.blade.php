@@ -93,13 +93,13 @@
             </li>
           </ul>
         </li>
-        <li class="nav-item nav-hasmenu">
+        <li class="nav-item nav-hasmenu {{in_array($current_route,['assistance'])? 'active' : ''}}">
           <a href="#!" class="nav-link"><span class="nav-icon"><i data-feather="user-plus"></i></span><span
               class="nav-text">Assistance</span><span class="nav-arrow"><i data-feather="chevron-right"></i></span></a>
           <ul class="nav-submenu">
-            {{-- <li class="nav-item">
-              <a class="nav-link" href="#">List</a>
-            </li> --}}
+            <li class="nav-item">
+              <a class="nav-link" href="{{route('assistance')}}">List</a>
+            </li>
            
           
            
