@@ -81,5 +81,14 @@ class ValidationRepository
       'picnic_id.exists' => 'Invalid picnic.'
     ]);
   }
+  public function acceptAssistanceFormValidation($request): object
+  {
+    return Validator::make($request->all(),[
+      'assistance_id' => 'bail|required|exists:assistances,id,deleted_at,NULL,status,2,volunteer_approval,0',
+    ],[
+      'assistance_id.required' => 'assistance_id is mandatory.',
+      'assistance_id.exists' => 'Invalid assistance_id.'
+    ]);
+  }
 
 }
